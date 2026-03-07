@@ -1,0 +1,29 @@
+{
+  "name": "2026",
+  "version": "1.0.0",
+  "description": "课程主页",
+  "private": true,
+  "scripts": {
+    "test": "prettier --check docs && autocorrect --lint docs",
+    "format": "prettier --write docs && autocorrect --fix docs",
+    "dev": "mkdocs serve",
+    "build": "mkdocs build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/USTC-ISP-2026/homepage"
+  },
+  "keywords": [
+    "ustc",
+    "course"
+  ],
+  "author": "2023",
+  "bugs": {
+    "url": "https://github.com/USTC-ISP-2026/homepage/issues"
+  },
+  "homepage": "https://github.com/USTC-ISP-2026/homepage#readme",
+  "dependencies": {
+    "autocorrect-node": "^2.8.4",
+    "prettier": "^3.1.0"
+  }
+}

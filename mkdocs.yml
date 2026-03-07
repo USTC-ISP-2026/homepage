@@ -1,0 +1,110 @@
+site_name: USTC 系统程序设计基础
+theme:
+  custom_dir: overrides
+  name: material
+  language: 'zh'
+  features:
+    - navigation.tabs     # 启用上方的分栏
+    - navigation.tabs.sticky  # 让分栏保持可见
+    - navigation.expand   # 启用左侧导航栏的展开按钮
+    - navigation.footer   # 启用界面下方翻页按钮
+    - content.code.copy   # 启用代码框复制按钮
+
+  icon:
+    # 对应网址为 https://fontawesome.com/
+    logo: fontawesome/solid/computer
+    repo: fontawesome/brands/github
+
+  palette:
+    - scheme: 'default'
+      primary: 'purple'
+      accent: 'purple'
+      toggle:
+        icon: material/weather-sunny
+        name: 切换到夜晚模式
+    - scheme: 'slate'
+      primary: 'indigo'
+      accent: 'indigo'
+      toggle:
+        icon: material/weather-night
+        name: 切换到白天模式
+
+plugins:
+  - search
+  - glightbox
+  - git-authors   # 显示作者 https://github.com/timvink/mkdocs-git-authors-plugin
+  - git-revision-date-localized   # 显示上次编辑时间 https://github.com/timvink/mkdocs-git-revision-date-localized-plugin
+
+
+
+
+
+
+markdown_extensions:
+  - attr_list
+  - md_in_html
+  - pymdownx.arithmatex:
+      generic: true
+  # - pymdownx.betterem:
+  #     smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:pymdownx.emoji.twemoji
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tabbed
+  - pymdownx.tilde
+  - admonition
+  - pymdownx.keys
+  - footnotes
+
+  - pymdownx.blocks.admonition: # 不同风格的提示块
+      types:
+      - new
+      - settings
+      - note
+      - abstract
+      - info
+      - tip
+      - success
+      - question
+      - warning
+      - failure
+      - danger
+      - bug
+      - example
+      - quote
+  - pymdownx.blocks.details:
+  - pymdownx.blocks.html:
+  - pymdownx.blocks.definition:
+  - pymdownx.blocks.tab:
+      alternate_style: True
+  - toc:
+      permalink: true
+      slugify: !!python/name:markdown.extensions.toc.slugify_unicode
+
+extra_css:
+  - stylesheets/extra.css
+  - css/extra.css
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css
+  - styles.css
+
+extra_javascript:
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  - javascripts/katex.js
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js
+
+nav:
+  - 首页: index.md

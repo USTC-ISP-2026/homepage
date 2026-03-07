@@ -1,0 +1,10 @@
+mkdocs-git-authors-plugin
+mkdocs-git-revision-date-localized-plugin
+mkdocs-glightbox
+mkdocs-material~=9.7.1
+mkdocs-with-pdf
+mkdocs
+mdx_truly_sane_lists
+jinja2~=3.1.6
+markupsafe~=2.0.1
+pymdown-extensions
