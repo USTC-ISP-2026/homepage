@@ -1,0 +1,1268 @@
+<!DOCTYPE html><html lang="zh" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../part2/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+    
+    
+      
+        <title>章节一：在虚拟机下安装Linux系统（选做） - USTC 系统程序设计基础</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css">
+    
+      <link rel="stylesheet" href="../../styles.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="purple" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#10-若干名词解释" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="USTC 系统程序设计基础" class="md-header__button md-logo" aria-label="USTC 系统程序设计基础" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M348.8 32C340.7 46.1 336 62.5 336 80v16H64v224h272v64H64c-35.3 0-64-28.7-64-64V96c0-35.3 28.7-64 64-64zM336 432c0 17.5 4.7 33.9 12.8 48H120c-13.3 0-24-10.7-24-24s10.7-24 24-24zm96-400h96c26.5 0 48 21.5 48 48v352c0 26.5-21.5 48-48 48h-96c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48m24 64c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24zm0 96c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24zm56 144a32 32 0 1 0-64 0 32 32 0 1 0 64 0"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            USTC 系统程序设计基础
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              章节一：在虚拟机下安装Linux系统（选做）
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="purple" data-md-color-accent="purple" aria-label="切换到夜晚模式" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到夜晚模式" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="切换到白天模式" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到白天模式" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+  Lab1
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="USTC 系统程序设计基础" class="md-nav__button md-logo" aria-label="USTC 系统程序设计基础" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M348.8 32C340.7 46.1 336 62.5 336 80v16H64v224h272v64H64c-35.3 0-64-28.7-64-64V96c0-35.3 28.7-64 64-64zM336 432c0 17.5 4.7 33.9 12.8 48H120c-13.3 0-24-10.7-24-24s10.7-24 24-24zm96-400h96c26.5 0 48 21.5 48 48v352c0 26.5-21.5 48-48 48h-96c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48m24 64c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24zm0 96c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24zm56 144a32 32 0 1 0-64 0 32 32 0 1 0 64 0"></path></svg>
+
+    </a>
+    USTC 系统程序设计基础
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab1
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Lab1
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux基础&amp;Codia平台介绍
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    在虚拟机下安装Linux系统
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    在虚拟机下安装Linux系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#10-若干名词解释" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.0 若干名词解释
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-下载" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 下载
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-vmware-workstation-pro下载" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 VMware Workstation Pro下载
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-创建安装虚拟机-vmware" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 创建、安装虚拟机 (VMware)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.3 创建、安装虚拟机 (VMware)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-新建虚拟机" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.1 新建虚拟机
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-设置虚拟机名称和文件存放位置" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.2 设置虚拟机名称和文件存放位置
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#133-设置虚拟硬盘" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.3 设置虚拟硬盘
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#134-硬件配置" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.4 硬件配置
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#135-选择操作系统镜像" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.5 选择操作系统镜像
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#136-安装ubuntu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.6 安装Ubuntu
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-其他必要设置" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 其他必要设置
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.4 其他必要设置">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#141-换源" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4.1 换源
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#142-设置文件拖放" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4.2 设置文件拖放
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#143-修改语言" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4.3 修改语言
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#144-如何关机" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4.4 如何关机
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    初探Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../part3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Codia平台介绍
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../additional/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WSL2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requirement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实验要求与检查
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#10-若干名词解释" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.0 若干名词解释
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-下载" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 下载
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-vmware-workstation-pro下载" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 VMware Workstation Pro下载
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-创建安装虚拟机-vmware" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 创建、安装虚拟机 (VMware)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.3 创建、安装虚拟机 (VMware)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-新建虚拟机" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.1 新建虚拟机
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-设置虚拟机名称和文件存放位置" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.2 设置虚拟机名称和文件存放位置
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#133-设置虚拟硬盘" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.3 设置虚拟硬盘
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#134-硬件配置" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.4 硬件配置
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#135-选择操作系统镜像" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.5 选择操作系统镜像
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#136-安装ubuntu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.6 安装Ubuntu
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-其他必要设置" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 其他必要设置
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.4 其他必要设置">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#141-换源" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4.1 换源
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#142-设置文件拖放" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4.2 设置文件拖放
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#143-修改语言" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4.3 修改语言
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#144-如何关机" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4.4 如何关机
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>在虚拟机下安装Linux系统</h1>
+
+<blockquote>
+<p>提示：</p>
+<ul>
+<li>本部分属于初学者指南。我们不限制环境的使用。你可以使用机房环境、双系统或其他linux发行版完成</li>
+<li>本课程推荐使用机房环境、VMware虚拟机来完成实验</li>
+</ul>
+</blockquote>
+<h2 id="10-若干名词解释">1.0 若干名词解释<a class="headerlink" href="#10-若干名词解释" title="Permanent link">¶</a></h2>
+<p>宿主机(host)：主机，即物理机器。</p>
+<p>虚拟机：在主机操作系统上运行的一个“子机器”。</p>
+<p>Linux发行版：Linux内核与应用软件打包构成的可以使用的操作系统套装。常见的有Ubuntu、Arch、CentOS甚至Android等。</p>
+<h2 id="11-下载">1.1 下载<a class="headerlink" href="#11-下载" title="Permanent link">¶</a></h2>
+<p>虚拟机软件：</p>
+<ul>
+<li>VMware Workstation Pro的下载链接（请参考1.2的步骤下载）：<a href="https://support.broadcom.com/group/ecx/productdownloads?subfamily=VMware%20Workstation%20Pro&amp;freeDownloads=true">https://support.broadcom.com/group/ecx/productdownloads?subfamily=VMware%20Workstation%20Pro&amp;freeDownloads=true</a></li>
+<li>macOS宿主机若想使用其他虚拟机软件，请自行搜索安装教程。</li>
+</ul>
+<p>Ubuntu 24.04.4 LTS 安装镜像文件（下载完成之后，你不需要打开镜像文件）：</p>
+<ul>
+<li>官网链接：<a href="https://releases.ubuntu.com/24.04/ubuntu-24.04.4-desktop-amd64.iso">https://releases.ubuntu.com/24.04/ubuntu-24.04.4-desktop-amd64.iso</a></li>
+<li>清华镜像：<a href="https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/24.04/ubuntu-24.04.4-desktop-amd64.iso">https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/24.04/ubuntu-24.04.4-desktop-amd64.iso</a></li>
+</ul>
+<h2 id="12-vmware-workstation-pro下载">1.2 VMware Workstation Pro下载<a class="headerlink" href="#12-vmware-workstation-pro下载" title="Permanent link">¶</a></h2>
+<ol>
+<li>访问<a href="https://support.broadcom.com/web/ecx/home">BROADCOM官网</a>，在右上角注册账号并登录。</li>
+</ol>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="/exp1-part1.assets/image-20250314155609241.png" data-desc-position="bottom"><img src="/exp1-part1.assets/image-20250314155609241.png" alt="image-20250314155609241" style="zoom: 33%;"></a></p>
+<ol>
+<li>访问<a href="https://support.broadcom.com/group/ecx/productdownloads?subfamily=VMware%20Workstation%20Pro&amp;freeDownloads=true">https://support.broadcom.com/group/ecx/productdownloads?subfamily=VMware%20Workstation%20Pro&amp;freeDownloads=true</a>，你会看到25H2和17.0两种类型的VMware Workstation Pro，前者VMware 25H2无默认中文环境(可自行搜索配置中文环境教程)，后者VMware 17.0有默认中文环境，展开<code>VMware Workstation Pro 25H2 for Windows</code>或<code>VMware Workstation Pro 17.0 for Windows</code>，点击最新版本。</li>
+</ol>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="/exp1-part1.assets/choose_vmware_version.png" data-desc-position="bottom"><img src="/exp1-part1.assets/choose_vmware_version.png" alt="choose_vmware_version" style="zoom: 25%;"></a></p>
+<ol>
+<li>勾选<code>I agree to the Terms and Conditions</code>，点击下载图标下载(图中是17.6.3版本，建议选择17.6.4版本或25H2u1版本)。</li>
+</ol>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="/exp1-part1.assets/image-20250314160535907.png" data-desc-position="bottom"><img src="/exp1-part1.assets/image-20250314160535907.png" alt="image-20250314160535907" style="zoom: 25%;"></a></p>
+<ol>
+<li>正常应该是直接开始下载，如果弹出如下界面，补全相关信息，点击提交，再按照第三步操作一遍即可。</li>
+</ol>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="/exp1-part1.assets/image-20250314160753049.png" data-desc-position="bottom"><img src="/exp1-part1.assets/image-20250314160753049.png" alt="image-20250314160753049" style="zoom:25%;"></a></p>
+<p>安装VMware的步骤较为简单，运行安装程序即可，在此不表。</p>
+<h2 id="13-创建安装虚拟机-vmware">1.3  创建、安装虚拟机 (VMware)<a class="headerlink" href="#13-创建安装虚拟机-vmware" title="Permanent link">¶</a></h2>
+<h3 id="131-新建虚拟机">1.3.1 新建虚拟机<a class="headerlink" href="#131-新建虚拟机" title="Permanent link">¶</a></h3>
+<p>左上角菜单栏单击<code>文件</code>，点击<code>新建虚拟机</code>。</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="/exp1-part1.assets/image-20250314163948960.png" data-desc-position="bottom"><img src="/exp1-part1.assets/image-20250314163948960.png" alt="image-20250314163948960" style="zoom: 50%;"></a></p>
+<p>在打开的窗口选择<code>典型（推荐）</code>，点击<code>下一步</code>   。</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="/exp1-part1.assets/image-20250314164028113.png" data-desc-position="bottom"><img src="/exp1-part1.assets/image-20250314164028113.png" alt="image-20250314164028113" style="zoom: 50%;"></a></p>
+<p>选择<code>稍后安装操作系统</code>，点击<code>下一步</code>。</p>
+<blockquote>
+<p>请不要在这里选择安装程序光盘镜像文件，我们会在稍后再选择。</p>
+<p>此处选择会触发自动安装，后续实验可能会出现问题。</p>
+</blockquote>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="/exp1-part1.assets/image-20250314164941858.png" data-desc-position="bottom"><img src="/exp1-part1.assets/image-20250314164941858.png" alt="image-20250314164941858" style="zoom: 50%;"></a></p>
+<p>客户机操作系统选择<code>Linux</code>，版本选择<code>Ubuntu 64 位</code>。</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="/exp1-part1.assets/image-20250314165150175.png" data-desc-position="bottom"><img src="/exp1-part1.assets/image-20250314165150175.png" alt="image-20250314165150175" style="zoom:50%;"></a></p>
+<h3 id="132-设置虚拟机名称和文件存放位置">1.3.2 设置虚拟机名称和文件存放位置<a class="headerlink" href="#132-设置虚拟机名称和文件存放位置" title="Permanent link">¶</a></h3>
+<p>设置虚拟机名称和文件存放位置。</p>
+<blockquote>
+<p>考虑到虚拟磁盘大小可能需要50GB以上，建议将其放在空间有富余的磁盘分区上。</p>
+</blockquote>
+<h3 id="133-设置虚拟硬盘">1.3.3 设置虚拟硬盘<a class="headerlink" href="#133-设置虚拟硬盘" title="Permanent link">¶</a></h3>
+<p>最大磁盘大小：建议40G~50G。你可以随意选择是否拆分磁盘的选项。如果你有很多不常用的文件占用大量磁盘空间，可以考虑将其转移到<a href="https://rec.ustc.edu.cn">睿客云盘</a>上保存。（注意：虚拟机硬盘空间并不是预先全部分配，而是分配实际使用到的部分，所以设置略大不影响实际磁盘使用）</p>
+<blockquote>
+<p>警告：如果磁盘空间不够，Linux启动会黑屏进不去图形界面，需要在命令模式下删除一些文件后重启才能进入图形界面。一些虚拟机具备“扩展磁盘容量”的功能，但是根据实际测试，发现很多时候反而会让虚拟机直接黑屏。</p>
+</blockquote>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="/exp1-part1.assets/image-20250314165715392.png" data-desc-position="bottom"><img src="/exp1-part1.assets/image-20250314165715392.png" alt="image-20250314165715392" style="zoom: 67%;"></a></p>
+<h3 id="134-硬件配置">1.3.4 硬件配置<a class="headerlink" href="#134-硬件配置" title="Permanent link">¶</a></h3>
+<p>可以在<code>自定义硬件</code>内自己设置内存、处理器核数等设置。完成设置以后点击<code>完成</code>。</p>
+<blockquote>
+<p>请至少分配2GB以上的内存给虚拟机。同时建议分配至少¼主机内存给虚拟机。</p>
+<p>为虚拟机分配更多的CPU内核数量有助于提高虚拟机的性能。注意，给虚拟机分配的内核不是被虚拟机独占的。就算为虚拟机分配宿主机相同的内核数量，也毫无问题。</p>
+</blockquote>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="/exp1-part1.assets/image-20250314170024532.png" data-desc-position="bottom"><img src="/exp1-part1.assets/image-20250314170024532.png" alt="image-20250314170024532" style="zoom:50%;"></a></p>
+<h3 id="135-选择操作系统镜像">1.3.5 选择操作系统镜像<a class="headerlink" href="#135-选择操作系统镜像" title="Permanent link">¶</a></h3>
+<p>右键点击左侧侧边栏中我们创建的虚拟机，然后点击<code>设置</code>。</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="/exp1-part1.assets/image-20250314170510468.png" data-desc-position="bottom"><img src="/exp1-part1.assets/image-20250314170510468.png" alt="image-20250314170510468" style="zoom: 33%;"></a></p>
+<p>在设置界面，点击<code>CD/DVD(SATA)</code>，在右侧，选择<code>使用ISO映像文件</code>，点击<code>浏览</code>，选择我们之前下载的Ubuntu 24.04.2的镜像文件，点击<code>确定</code>保存设置。</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="/exp1-part1.assets/image-20250314170709698.png" data-desc-position="bottom"><img src="/exp1-part1.assets/image-20250314170709698.png" alt="image-20250314170709698" style="zoom: 33%;"></a></p>
+<p>在我们创建的虚拟机的选项卡中，点击<code>开启此虚拟机</code>，启动虚拟机，准备安装Ubuntu。</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="/exp1-part1.assets/image-20250314171054916.png" data-desc-position="bottom"><img src="/exp1-part1.assets/image-20250314171054916.png" alt="image-20250314171054916" style="zoom: 33%;"></a></p>
+<h3 id="136-安装ubuntu">1.3.6 安装Ubuntu<a class="headerlink" href="#136-安装ubuntu" title="Permanent link">¶</a></h3>
+<blockquote>
+<p>如果在安装时发现“继续”、“后退”、“退出”等按钮在屏幕外，请先按<code>Alt+F7</code>，然后松开键盘，再移动鼠标以拖动窗口。点击鼠标会使窗口拖动停止。</p>
+</blockquote>
+<p>安装的大部分步骤只要默认下一步即可，我们只对关键步骤进行提示。</p>
+<p>虚拟机启动以后会弹出如下界面，选择<code>Try or Install Ubuntu</code>，按回车键选择。</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="/exp1-part1.assets/image-20250314200018191.png" data-desc-position="bottom"><img src="/exp1-part1.assets/image-20250314200018191.png" alt="image-20250314200018191" style="zoom:50%;"></a></p>
+<p>接下来将进入Ubuntu安装程序，选择语言为<code>中文（简体）</code>：</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="/exp1-part1.assets/image-20250314200303953.png" data-desc-position="bottom"><img src="/exp1-part1.assets/image-20250314200303953.png" alt="image-20250314200303953" style="zoom: 33%;"></a></p>
+<p>键盘布局选择<code>汉语</code>：</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="/exp1-part1.assets/image-20250314200401562.png" data-desc-position="bottom"><img src="/exp1-part1.assets/image-20250314200401562.png" alt="image-20250314200401562" style="zoom: 33%;"></a></p>
+<p>在更新可用界面，不建议选<code>现在更新</code>。因为国内默认的下载源速度较慢，换源之后速度才快。此处点击<code>跳过</code>，稍后我们进入系统换源以后再更新。</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="/exp1-part1.assets/image-20250314200452000.png" data-desc-position="bottom"><img src="/exp1-part1.assets/image-20250314200452000.png" alt="image-20250314200452000" style="zoom: 33%;"></a></p>
+<p>安装类型界面，因为虚拟机的磁盘本来就是空的，所以安装类型选择<code>擦除磁盘并安装Ubuntu</code>。</p>
+<blockquote>
+<p>警告：在安装双系统时，不要选这个，否则后果自负。</p>
+</blockquote>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="/exp1-part1.assets/image-20250314200610851.png" data-desc-position="bottom"><img src="/exp1-part1.assets/image-20250314200610851.png" alt="image-20250314200610851" style="zoom: 33%;"></a></p>
+<p>设置账户界面，随便编一个姓名、计算机名、用户名，然后设置密码。</p>
+<blockquote>
+<p>警告：请一定要记住密码。否则会进不去系统。</p>
+</blockquote>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="/exp1-part1.assets/image-20250314200649270.png" data-desc-position="bottom"><img src="/exp1-part1.assets/image-20250314200649270.png" alt="image-20250314200649270" style="zoom: 33%;"></a></p>
+<p>时去选择界面，时区位置默认上海即可。</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="/exp1-part1.assets/image-20250314200746145.png" data-desc-position="bottom"><img src="/exp1-part1.assets/image-20250314200746145.png" alt="image-20250314200746145" style="zoom: 33%;"></a></p>
+<p>最后等待安装完成即可，安装完成之后系统会提示重启，按照提示重启即可。</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="/exp1-part1.assets/image-20250314201427567.png" data-desc-position="bottom"><img src="/exp1-part1.assets/image-20250314201427567.png" alt="image-20250314201427567" style="zoom: 33%;"></a></p>
+<p>重启可能会遇到如下情况，提示需要移除安装光盘。</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="/exp1-part1.assets/image-20250314201958353.png" data-desc-position="bottom"><img src="/exp1-part1.assets/image-20250314201958353.png" alt="image-20250314201958353" style="zoom: 33%;"></a></p>
+<p>按照<code>1.3.5</code>章节，打开虚拟机设置界面，将<code>启动时连接</code>取消勾选，再点击确定保存。然后回到虚拟机界面，点击回车键，即可正常进入系统。</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="/exp1-part1.assets/image-20250314202238549.png" data-desc-position="bottom"><img src="/exp1-part1.assets/image-20250314202238549.png" alt="image-20250314202238549" style="zoom: 33%;"></a></p>
+<h2 id="14-其他必要设置">1.4 其他必要设置<a class="headerlink" href="#14-其他必要设置" title="Permanent link">¶</a></h2>
+<h3 id="141-换源">1.4.1 换源<a class="headerlink" href="#141-换源" title="Permanent link">¶</a></h3>
+<p>Ubuntu自带的软件源较慢，这会导致我们安装软件包时花更多的时间下载。所以要更换软件源为科大镜像。进入虚拟机后，点击左下角的进入应用菜单，找到并进入“软件更新器”。进入之后它会检查更新，最后会跳出一个“是否向安装更新”的提示。<strong>不要安装</strong>，并点击“设置”。</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="/exp1-part1.assets/image-20250314202455020.png" data-desc-position="bottom"><img src="/exp1-part1.assets/image-20250314202455020.png" alt="image-20250314202455020" style="zoom: 67%;"></a></p>
+<p>更改“Ubuntu”软件选项卡的“下载自”为“其他站点”，在弹出的“选择下载服务器”窗口中选择“中国-mirrors.ustc.edu.cn”。输入密码即可完成修改。</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="/images/pic-1.4.1-2.png" data-desc-position="bottom"><img src="/images/pic-1.4.1-2.png" style="zoom:67%;"></a></p>
+<p>设置之后，如果提示更新软件包缓存，请选择更新，并等待更新结束再安装其他软件包/语言包。如果提示更新系统，也可以放心地选择更新而不必担心用时过长。</p>
+<h3 id="142-设置文件拖放">1.4.2 设置文件拖放<a class="headerlink" href="#142-设置文件拖放" title="Permanent link">¶</a></h3>
+<p>VMware默认可以进行主机与虚拟机之间的文件拖放，因为VMware会自动安装VMware tools，但是如果发现调整不了虚拟机分辨率、无法共享粘贴板等情况，是自动安装失败（比如网络问题），需要手动安装。请参考此链接：<a href="https://blog.csdn.net/williamcsj/article/details/121019391">https://blog.csdn.net/williamcsj/article/details/121019391</a>或者官方文档：<a href="https://techdocs.broadcom.com/cn/zh-cn/vmware-cis/vsphere/tools/12-1-0/vmware-tools-administration-12-1-0/installing-vmware-tools/manually-install-vmware-tools-on-windows.html">https://techdocs.broadcom.com/cn/zh-cn/vmware-cis/vsphere/tools/12-1-0/vmware-tools-administration-12-1-0/installing-vmware-tools/manually-install-vmware-tools-on-windows.html</a></p>
+<blockquote>
+<p>VMware的文件拖放经常会出问题，目前并没有通用的解决方案，因此建议用U盘、共享文件夹、睿客云盘之类实现文件中转。</p>
+</blockquote>
+<h3 id="143-修改语言">1.4.3 修改语言<a class="headerlink" href="#143-修改语言" title="Permanent link">¶</a></h3>
+<p>如果按照本文档进行手动安装，一般无需修改。如果你采用了自动安装或者有一些意外情况，请参考此链接：<a href="https://blog.csdn.net/ibiao/article/details/127715465">https://blog.csdn.net/ibiao/article/details/127715465</a></p>
+<h3 id="144-如何关机">1.4.4 如何关机<a class="headerlink" href="#144-如何关机" title="Permanent link">¶</a></h3>
+<p>如何关闭Ubuntu：如下图所示，点屏幕右上角-关机。</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="/exp1-part1.assets/image-20250314203058995.png" data-desc-position="bottom"><img src="/exp1-part1.assets/image-20250314203058995.png" alt="image-20250314203058995" style="zoom:50%;"></a></p>
+<p>直接点虚拟机右上角的叉也可以关机。</p>
+<div style="page-break-after: always;"></div>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年3月9日 11:13:44 UTC">2026年3月9日</span>
+  </span>
+
+    
+    
+    
+      
+  
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="贡献者">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"></path></svg>
+      
+    </span>
+    <nav>
+      
+    </nav>
+  </span>
+
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚">
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="上一页: Linux基础&amp;Codia平台介绍">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                Linux基础&amp;Codia平台介绍
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../part2/" class="md-footer__link md-footer__link--next" aria-label="下一页: 初探Linux">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                初探Linux
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.expand", "navigation.footer", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

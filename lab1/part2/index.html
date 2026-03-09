@@ -1,0 +1,1650 @@
+<!DOCTYPE html><html lang="zh" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../part1/">
+      
+      
+        <link rel="next" href="../part3/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+    
+    
+      
+        <title>章节二：初探Linux - USTC 系统程序设计基础</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css">
+    
+      <link rel="stylesheet" href="../../styles.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="purple" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#21-ubuntu-gui的使用" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="USTC 系统程序设计基础" class="md-header__button md-logo" aria-label="USTC 系统程序设计基础" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M348.8 32C340.7 46.1 336 62.5 336 80v16H64v224h272v64H64c-35.3 0-64-28.7-64-64V96c0-35.3 28.7-64 64-64zM336 432c0 17.5 4.7 33.9 12.8 48H120c-13.3 0-24-10.7-24-24s10.7-24 24-24zm96-400h96c26.5 0 48 21.5 48 48v352c0 26.5-21.5 48-48 48h-96c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48m24 64c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24zm0 96c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24zm56 144a32 32 0 1 0-64 0 32 32 0 1 0 64 0"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            USTC 系统程序设计基础
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              章节二：初探Linux
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="purple" data-md-color-accent="purple" aria-label="切换到夜晚模式" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到夜晚模式" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="切换到白天模式" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到白天模式" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+  Lab1
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="USTC 系统程序设计基础" class="md-nav__button md-logo" aria-label="USTC 系统程序设计基础" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M348.8 32C340.7 46.1 336 62.5 336 80v16H64v224h272v64H64c-35.3 0-64-28.7-64-64V96c0-35.3 28.7-64 64-64zM336 432c0 17.5 4.7 33.9 12.8 48H120c-13.3 0-24-10.7-24-24s10.7-24 24-24zm96-400h96c26.5 0 48 21.5 48 48v352c0 26.5-21.5 48-48 48h-96c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48m24 64c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24zm0 96c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24zm56 144a32 32 0 1 0-64 0 32 32 0 1 0 64 0"></path></svg>
+
+    </a>
+    USTC 系统程序设计基础
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab1
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Lab1
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux基础&amp;Codia平台介绍
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    在虚拟机下安装Linux系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    初探Linux
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    初探Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#21-ubuntu-gui的使用" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Ubuntu GUI的使用
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22-终端命令行的使用" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 终端（命令行）的使用
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2 终端（命令行）的使用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#221-打开终端" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2.1 打开终端
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#222-目录与路径" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2.2 目录与路径
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#223-运行指令" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2.3 运行指令
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#224-指令及其参数" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2.4 指令及其参数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#225-终端使用小技巧" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2.5 终端使用小技巧
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#23-linux常用指令" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Linux常用指令
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3 Linux常用指令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#231-man" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.1 man
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#232-sudo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.2 sudo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#233-ls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.3 ls
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#234-cd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.4 cd
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#235-pwd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.5 pwd
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#236-rm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.6 rm
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#237-mv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.7 mv
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#238-cp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.8 cp
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#239-mkdir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.9 mkdir
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2310-cat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.10 cat
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2311-kill" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.11 kill
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2312-ps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.12 ps
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2313-wget" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.13 wget
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2314-tar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.14 tar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2315-包管理器apt等" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.15 包管理器（apt等）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2316-文字编辑器vimgedit等" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.16 文字编辑器（vim、gedit等）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2317-编译指令gccgmake等" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.17 编译指令（gcc、g++、make等）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2318-gdb调试指令" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.18 gdb调试指令
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#24-参考资料" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 参考资料
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../part3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Codia平台介绍
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../additional/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WSL2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requirement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实验要求与检查
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#21-ubuntu-gui的使用" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Ubuntu GUI的使用
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22-终端命令行的使用" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 终端（命令行）的使用
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2 终端（命令行）的使用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#221-打开终端" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2.1 打开终端
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#222-目录与路径" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2.2 目录与路径
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#223-运行指令" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2.3 运行指令
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#224-指令及其参数" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2.4 指令及其参数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#225-终端使用小技巧" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2.5 终端使用小技巧
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#23-linux常用指令" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Linux常用指令
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3 Linux常用指令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#231-man" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.1 man
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#232-sudo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.2 sudo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#233-ls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.3 ls
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#234-cd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.4 cd
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#235-pwd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.5 pwd
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#236-rm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.6 rm
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#237-mv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.7 mv
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#238-cp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.8 cp
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#239-mkdir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.9 mkdir
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2310-cat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.10 cat
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2311-kill" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.11 kill
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2312-ps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.12 ps
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2313-wget" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.13 wget
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2314-tar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.14 tar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2315-包管理器apt等" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.15 包管理器（apt等）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2316-文字编辑器vimgedit等" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.16 文字编辑器（vim、gedit等）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2317-编译指令gccgmake等" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.17 编译指令（gcc、g++、make等）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2318-gdb调试指令" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3.18 gdb调试指令
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#24-参考资料" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 参考资料
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>初探Linux</h1>
+
+<blockquote>
+<p>考虑到很多同学在本次实验之前没有使用过Linux系统，因此提供此部分来速成Linux。</p>
+</blockquote>
+<h2 id="21-ubuntu-gui的使用">2.1 Ubuntu GUI的使用<a class="headerlink" href="#21-ubuntu-gui的使用" title="Permanent link">¶</a></h2>
+<p>打开虚拟机进入到Ubuntu之后，即可看到Ubuntu的GUI界面。默认左侧是Dock（类似Windows的任务栏），里面有若干内置软件。左下角是菜单（类似Windows的开始菜单）。考虑到部分同学首次接触Ubuntu，因此建议各位依次点击所有的软件、按钮，以进一步了解Ubuntu并熟悉其中的软件。</p>
+<p>屏幕最右上角有几个图标，可以调整音量、网络设置、语言、输入法等，还可以关机。在菜单里找到“设置”，里面可以调整系统设置，如分辨率、壁纸等。Dock里有一个文件夹形状的图标，它是文件管理器，可以像windows一样图形化地浏览文件。</p>
+<blockquote>
+<p>提示：如果在执行某个操作时报错文件/文件夹不存在，可以在UI界面内手动复制粘贴文件到目标位置（文件所有者为root用户的除外）。</p>
+</blockquote>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="/exp1-part1.assets/image-20250314204308347.png" data-desc-position="bottom"><img src="/exp1-part1.assets/image-20250314204308347.png" style="zoom: 25%;"></a></p>
+<h2 id="22-终端命令行的使用">2.2 终端（命令行）的使用<a class="headerlink" href="#22-终端命令行的使用" title="Permanent link">¶</a></h2>
+<h3 id="221-打开终端">2.2.1 打开终端<a class="headerlink" href="#221-打开终端" title="Permanent link">¶</a></h3>
+<p>在桌面/文件管理器的空白处右键即可出现“在终端打开”按钮，点击此处即可呼出终端进而在终端中执行相关的Linux指令。注意：终端也是有工作位置的。简单而言，在哪个目录下打开终端，命令就会在哪个目录下执行。终端当前目录一般称为“<strong>工作目录</strong>”。</p>
+<blockquote>
+<p>举例：<code>ls</code>指令可以显示工作目录下的文件。在不同的目录下运行此指令的结果显然是不一样的。</p>
+</blockquote>
+<p>终端会显示工作目录</p>
+<h3 id="222-目录与路径">2.2.2 目录与路径<a class="headerlink" href="#222-目录与路径" title="Permanent link">¶</a></h3>
+<p>Linux与Windows不同，Windows一般会分有多个逻辑磁盘，每个逻辑磁盘各有一棵目录树，但Linux只有一个目录树，磁盘可以作为一棵子树<strong>挂载</strong>到目录树的某个节点。在Linux操作系统中，整个目录树的根节点被称为<strong>根目录</strong>。每个用户拥有一个<strong>主目录</strong>，或称<strong>家目录</strong>，类似windows的<code>C:\Users\用户名</code>。从根目录看，除root用户之外，每个用户的家目录为<code>/home/用户名</code>。</p>
+<p>Linux终端里使用的路径分为<strong>绝对路径</strong>和<strong>相对路径</strong>两种。绝对路径指从根目录算起的路径，相对路径指从工作目录算起的路径。其中，以根目录算起的绝对路径以<code>/</code>开头，以家目录算起的绝对路径以<code>~</code>开头，相对路径不需要<code>/</code>或<code>～</code>开头。</p>
+<blockquote>
+<p>举例：一个名为ustc的用户在他的家目录下创建了一个名为os的目录，在os目录下面又创建了一个名为lab1的目录，则该lab1目录可以表示为：
+* <code>/home/ustc/os/lab1</code>
+* <code>~/os/lab1</code>
+* 如果工作目录在家目录：<code>os/lab1</code>
+* 如果工作目录在os目录：<code>lab1</code></p>
+</blockquote>
+<p>一些特殊的目录：
+* <code>.</code>代表该目录自身。例：<code>cd .</code>代表原地跳转（<code>cd</code>是切换目录的指令）；
+* <code>..</code>代表该目录的父目录。特别地，根目录的父目录也是自身。
+* 在Linux里，文件名以<code>.</code>开头的文件是隐藏文件（或目录），如何显示它们请参考2.3.3.
+  * <code>.</code>和<code>..</code>都是隐藏的目录。</p>
+<blockquote>
+<p>举例：以下几个路径是等价的：
+* <code>/home/ustc/os/lab1</code>
+* <code>/home/ustc/os/././././././lab1</code>
+* <code>/home/ustc/os/../os/lab1</code></p>
+</blockquote>
+<h3 id="223-运行指令">2.2.3 运行指令<a class="headerlink" href="#223-运行指令" title="Permanent link">¶</a></h3>
+<p>在终端中输入可执行文件的路径即可。终端所在路径是程序运行时的路径。需要注意的是，如果运行的二进制文件就在工作目录下，需要在文件名前加上<code>./</code>。</p>
+<blockquote>
+<p>提示：与windows可执行文件扩展名为.exe不同，Linux中，可执行文件一般没有扩展名。例外：gcc在不指定输出文件名的情况下，编译出的可执行文件会带有.out的扩展名。但你也不需要管这个.out，直接运行也是一样的。</p>
+<p>例：有一个可执行文件，其路径为<code>~/os/lab1/testprog</code>。它在运行时会读取一个相对路径为<code>a.txt</code>的文件。
+* 在家目录下运行：需要执行<code>os/lab1/testprog</code>（或<code>~/os/lab1/testprog</code>等绝对路径），程序读取的<code>a.txt</code>在家目录下；
+* 在<code>~/os/lab1</code>下运行：需要执行<code>./testprog</code>(当然你用绝对路径也无所谓)，程序读取的<code>a.txt</code>在<code>~/os/lab1</code>目录下。</p>
+</blockquote>
+<p>相关问题：为什么在运行<code>sudo</code>、<code>man</code>等命令时，只需要输入指令名而不需要输入这些指令对应的二进制文件所在的路径？</p>
+<p>一种情况是，这是因为这些指令所在的路径（一般是<code>/usr/bin</code>）被加入到了该用户的<strong>环境变量</strong>中。当终端读取到一个不带路径的命令之后，系统只会在环境变量中搜索，从而方便用户使用。当然，默认被加入环境变量里的路径一般只有一些系统路径，除非自行设置，家目录下面没有目录默认在环境变量中。如感兴趣，修改环境变量的方法可自行搜索了解。</p>
+<p>另一种情况是，部分指令是Shell内建指令（如<code>cd</code>），它们的意义直接由Shell解释，没有对应的二进制文件。此情况可能会在下一实验中详细阐述。</p>
+<h3 id="224-指令及其参数">2.2.4 指令及其参数<a class="headerlink" href="#224-指令及其参数" title="Permanent link">¶</a></h3>
+<p>无论是Linux还是Windows，一条完整的命令都由命令及其参数构成。你们可以通过<code>man 指令名</code>来自行了解指令语法。一般来说，指令语法里带有'[ ]'的是可选参数，其他是必选参数。不同的参数的顺序一般是可以互换的。下面以<code>gcc</code>（一种编译器）为例，介绍实验文档描述指令的方式，以及如何按需构造一条指令。</p>
+<p>本次要用到的<code>gcc</code>指令的一部分语法是：<code>gcc [-static] [-o outfile] infile</code> 。下面是各参数介绍：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-static</td>
+<td>静态编译选项（此处参数仅为示例，参数详细含义请自行上网搜索）。</td>
+</tr>
+<tr>
+<td>-o outfile</td>
+<td>指定输出的可执行文件的文件名为outfile。如果不指定，会输出为a.out。</td>
+</tr>
+<tr>
+<td>infile</td>
+<td>要编译的gcc文件名。注意绝对路径/相对路径的问题。</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>如果我们编译test.c，不指定输出文件名，命令就只是<code>gcc test.c</code>；（这种情况下，gcc会自动命名输出文件为a.out） </li>
+<li>如果我们编译test.c，输出二进制文件名为test，命令就是<code>gcc -o test test.c</code>； </li>
+<li>一般来说参数的顺序是无所谓的。所以使用<code>gcc test.c -o test</code>也一样能编译。</li>
+<li>如果我们编译test.c，输出二进制文件名为test，且要使用静态编译，那么构造出的编译指令就是<code>gcc -static -o test test.c</code>。 </li>
+</ul>
+<h3 id="225-终端使用小技巧">2.2.5 终端使用小技巧<a class="headerlink" href="#225-终端使用小技巧" title="Permanent link">¶</a></h3>
+<ul>
+<li>按键盘的<code>↑↓</code>键可以切换到之前输入过的指令；</li>
+<li>按键盘的<code>Tab</code>键可以自动补全。如果按一下Tab之后没反应，说明候选项太多。再按一下Tab可以显示所有候选项。</li>
+<li>在shell里，<code>Ctrl+C</code>是终止不是复制。复制的快捷键是<code>Ctrl+Insert</code>或<code>Ctrl+Shift+C</code>，粘贴的快捷键是<code>Shift+Insert</code>或<code>Ctrl+Shift+V</code>。</li>
+</ul>
+<h2 id="23-linux常用指令">2.3 Linux常用指令<a class="headerlink" href="#23-linux常用指令" title="Permanent link">¶</a></h2>
+<blockquote>
+<p>注：一些指令的使用方法详见提供的链接。本部分涉及测验考察，测验方式见文档3.2。</p>
+</blockquote>
+<h3 id="231-man">2.3.1 man<a class="headerlink" href="#231-man" title="Permanent link">¶</a></h3>
+<p>英文缩写：manual</p>
+<p>如果你不知道一条命令的含义，使用<code>man xxx</code>可以显示该命令的使用手册。</p>
+<p>举例：<code>man ps</code> 可以显示<code>ps</code>指令的使用方法。按q退出手册。</p>
+<h3 id="232-sudo">2.3.2 sudo<a class="headerlink" href="#232-sudo" title="Permanent link">¶</a></h3>
+<p><strong>TL;DR：<code>sudo</code> = “以管理员模式运行”</strong>。<a href="https://mp.weixin.qq.com/s/JEIiLl-VXAkiahKZk8ECfw">A joke</a></p>
+<p>Linux采用<strong>用户组</strong>的概念实现访问控制，其中，只有root用户组才具备管理系统的权限。在<code>sudo</code>出现之前，一般用户管理linux系统的方式是，先用<code>su</code>指令切换到root用户，然后在root用户下进行操作。但是使用<code>su</code>的缺点之一在于必须要先告知root用户的密码，且这种控制方式不够精细。</p>
+<p>为了方便操作，并更加精确地控制权限，<code>sudo</code>用来将root用户的部分权限让渡给普通用户。普通用户只需要输入自己的密码，确认“我是我自己”，就能执行自己拥有的那部分管理员权限。特别地，在Ubuntu下，普通用户默认可以通过<code>sudo</code>取得root用户的所有权限。若想精确地控制每个用户能用<code>sudo</code>干什么，可以参阅<code>visudo</code>。</p>
+<p>如果在输入某个指令后，系统提示权限不够(Permission Denied)，那么在指令前加上<code>sudo</code>一般都能解决问题。</p>
+<blockquote>
+<p>注意1：root用户具备很高的权限。一些需要管理员权限才能执行的指令（如，删除整个磁盘上的内容）会破坏系统。所以在使用<code>sudo</code>时，请务必确认输入的指令没问题。</p>
+<p>注意2：为了防止旁窥者获知密码长度，linux下输入密码不会在屏幕上给出诸如***的回显。输完密码敲回车就行了。</p>
+</blockquote>
+<p>常见使用方法：<code>sudo command</code></p>
+<p>例：以普通用户运行<code>apt install vim</code>，会被告知没有权限，因为只有root用户（管理员）才有资格安装软件包。正确的用法是<code>sudo apt install vim</code>。</p>
+<h3 id="233-ls">2.3.3 ls<a class="headerlink" href="#233-ls" title="Permanent link">¶</a></h3>
+<p>英文全拼：list files</p>
+<p>显示特定目录中的文件列表。常见的一部分语法是：<code>ls [-a] [name]</code> 。参数含义详见<a href="https://www.runoob.com/linux/linux-comm-ls.html">Linux ls命令</a>。</p>
+<h3 id="234-cd">2.3.4 cd<a class="headerlink" href="#234-cd" title="Permanent link">¶</a></h3>
+<p>英文全拼：change directory</p>
+<p>切换工作目录。常见的一部分语法是：<code>cd [name]</code> 。参数含义详见<a href="https://www.runoob.com/linux/linux-comm-cd.html">Linux cd命令</a>。特别地，常见使用<code>cd -</code>来返回上次到达的目录。</p>
+<h3 id="235-pwd">2.3.5 pwd<a class="headerlink" href="#235-pwd" title="Permanent link">¶</a></h3>
+<p>英文全拼：print work directory</p>
+<p>输出工作目录的绝对路径。常见的使用方法是：<code>pwd</code> 。</p>
+<h3 id="236-rm">2.3.6 rm<a class="headerlink" href="#236-rm" title="Permanent link">¶</a></h3>
+<p>英文全拼：remove</p>
+<p>删除一个文件或目录。常见的一部分语法是：<code>rm [-rf] name</code> 。参数含义详见<a href="https://www.runoob.com/linux/linux-comm-rm.html">Linux rm命令</a>。</p>
+<h3 id="237-mv">2.3.7 mv<a class="headerlink" href="#237-mv" title="Permanent link">¶</a></h3>
+<p>英文全拼：move</p>
+<p>移动一个文件或目录，或重命名文件。常见的一部分语法是：<code>mv source dest</code> 。参数含义详见<a href="https://www.runoob.com/linux/linux-comm-mv.html">Linux mv命令</a>。</p>
+<h3 id="238-cp">2.3.8 cp<a class="headerlink" href="#238-cp" title="Permanent link">¶</a></h3>
+<p>英文全拼：copy</p>
+<p>复制一个文件或目录。常见的一部分语法是：<code>cp [-r] source dest</code> 。参数含义详见<a href="https://www.runoob.com/linux/linux-comm-cp.html">Linux cp命令</a>。</p>
+<h3 id="239-mkdir">2.3.9 mkdir<a class="headerlink" href="#239-mkdir" title="Permanent link">¶</a></h3>
+<p>英文全拼：make directory</p>
+<p>创建目录。常见的一部分语法是：<code>mkdir [-p] dirName</code> 。</p>
+<p>参数含义详见<a href="https://www.runoob.com/linux/linux-comm-mkdir.html">Linux mkdir命令</a>。</p>
+<h3 id="2310-cat">2.3.10 cat<a class="headerlink" href="#2310-cat" title="Permanent link">¶</a></h3>
+<p>英文全拼：concatenate</p>
+<p>一般用于将文件内容输出到屏幕。常见的使用方法是：<code>cat fileName</code> 。</p>
+<h3 id="2311-kill">2.3.11 kill<a class="headerlink" href="#2311-kill" title="Permanent link">¶</a></h3>
+<p>用于将指定的信息发送给程序，通常使用此指令来结束进程。强制结束进程的信号编号是9，所以强制结束进程的使用方法是：<code>kill -9 [进程编号]</code>。</p>
+<p>其他参数的使用方法可以参考<a href="https://www.runoob.com/linux/linux-comm-kill.html">Linux kill命令</a>。</p>
+<h3 id="2312-ps">2.3.12 ps<a class="headerlink" href="#2312-ps" title="Permanent link">¶</a></h3>
+<p>英文全拼：process status</p>
+<p>用于显示进程状态（任务管理器）。常见的使用方法：</p>
+<ul>
+<li><code>ps</code>: 显示<strong>当前用户</strong>在当前终端控制下的进程。考虑到用户通常想看不止当前用户和当前终端下的进程，所以不加参数的用法并不常用。</li>
+<li><code>ps aux</code>: 展示所有用户所有进程的详细信息。注意，a前面带一个横线是严格意义上不正确的使用方法。</li>
+<li><code>ps -ef</code>: 也是展示所有用户所有进程的详细信息。就输出结果而言和<code>ps aux</code>无甚差别。</li>
+</ul>
+<h3 id="2313-wget">2.3.13 wget<a class="headerlink" href="#2313-wget" title="Permanent link">¶</a></h3>
+<p>wget是一个在命令行下下载文件的工具。常见的使用方法是：<code>wget [-O FILE] URL</code>。</p>
+<p>例如，我们要下载 <a href="https://git-scm.com/images/logo@2x.png">https://git-scm.com/images/logo@2x.png</a> 到本地。</p>
+<ol>
+<li>直接下载：<code>wget https://git-scm.com/images/logo@2x.png</code>，文件名是<a href="mailto:logo@2x.png">logo@2x.png</a>。</li>
+<li>直接下载并重命名：<code>wget -O git.png https://git-scm.com/images/logo@2x.png</code>，文件名是git.png。注：-O中的O表示字母O而不是数字0。</li>
+</ol>
+<p>注意，如果发现有同名文件，1所示方法会在文件名后面加上.1的后缀进行区分，而2所示方法会直接覆盖。</p>
+<h3 id="2314-tar">2.3.14 tar<a class="headerlink" href="#2314-tar" title="Permanent link">¶</a></h3>
+<p>用于压缩、解压压缩包。常见使用方法：</p>
+<ul>
+<li>把某名为source的文件或目录压缩成名为out.tar.gz的gzip格式压缩文件：<code>tar zcvf out.tar.gz source</code></li>
+<li>解压缩某名为abc.tar.gz的gzip格式压缩文件：<code>tar zxvf abc.tar.gz</code></li>
+</ul>
+<p>其他使用方法详见<a href="https://www.runoob.com/linux/linux-comm-tar.html">Linux tar命令</a></p>
+<h3 id="2315-包管理器apt等">2.3.15 包管理器（apt等）<a class="headerlink" href="#2315-包管理器apt等" title="Permanent link">¶</a></h3>
+<p>在Linux下，如何安装软件包？每个Linux发行版都会自带一个<strong>包管理器</strong>，类似一个“软件管家”，专门下载免费软件。</p>
+<p>不同Linux发行版附带的包管理器是不一样的。如，Debian用apt（Ubuntu是基于Debian的，所以也用apt），ArchLinux用Pacman，CentOS用yum，等等。</p>
+<p>apt的常见用法：</p>
+<ul>
+<li>安装xx包，yy包和zz包：<code>sudo apt install xx yy zz</code></li>
+<li>删除xx包，yy包和zz包：<code>sudo apt remove xx yy zz</code></li>
+<li>更新已安装的软件包：<code>sudo apt upgrade</code></li>
+<li>从软件源处检查系统中的软件包是否有更新：<code>sudo apt update</code></li>
+</ul>
+<p>其他使用方法参见<a href="https://www.runoob.com/linux/linux-comm-apt.html">Linux apt命令</a>。</p>
+<blockquote>
+<p>其他提示：</p>
+<ul>
+<li>如果报错<code>“无法获得锁 /var/lib/dpkg/lock.....”</code>，这是因为系统在同一时刻只能运行一个apt，请耐心等另一边安装/更新完。Ubuntu的软件包管理器也是一个apt。若你确信没有别的apt在运行，可能是因为没安装完包就关掉了终端或apt。请重启Linux或参考<a href="https://blog.csdn.net/yaoduren/article/details/8561145">此链接</a>。</li>
+<li>如果报错<code>“下列软件包有未满足的依赖关系......”</code>或<code>没有可用的软件包.....，但是它被其他软件包引用了....</code>，可能是因为刚换了源，没等包刷新完就关闭窗口，请手动<code>sudo apt-get update</code>。</li>
+</ul>
+</blockquote>
+<h3 id="2316-文字编辑器vimgedit等">2.3.16 文字编辑器（vim、gedit等）<a class="headerlink" href="#2316-文字编辑器vimgedit等" title="Permanent link">¶</a></h3>
+<p>Linux系统中，常见的使用命令行的文字编辑器是vim。系统一般并<strong>不</strong>自带vim，需要使用包管理器安装。由于vim的使用方法与我们习惯的的GUI编辑方式有很大差异，所以在这里不详细介绍它的用法。若想了解请参考https://<a href="http://www.runoob.com/linux/linux-vim.html">www.runoob.com/linux/linux-vim.html</a>。</p>
+<p>gedit是Ubuntu使用的Gnome桌面环境<strong>自带</strong>的一款文本编辑器，其使用方法与Windows的记事本(Notepad)大同小异。在这里也不多介绍。在终端里输入<code>gedit</code>回车即可启动gedit。编辑特定的文件的使用方法是<code>gedit 文件名</code>，若输入的文件名不存在，将自动创建新文件。在Ubuntu的图形化界面中直接双击文本文件也可以编辑文件。<strong>但需要注意的是，在编辑一些需要root权限的文件时，直接双击文件不能编辑，只能在终端里<code>sudo gedit 文件名</code>。</strong></p>
+<blockquote>
+<p>在命令行下启动gedit会在终端里报warning，忽略即可。<a href="https://askubuntu.com/questions/798935/set-document-metadata-failed-when-i-run-sudo-gedit">参考链接</a></p>
+</blockquote>
+<p>如果想使用一些更高级的编辑器，可以考虑安装vscode。安装方法请自行到网上搜索。</p>
+<p>比起在虚拟机内安装vscode，更推荐在主机上安装vscode并用ssh连接虚拟机，可以参考链接：<a href="https://blog.csdn.net/m0_73500130/article/details/139669691">https://blog.csdn.net/m0_73500130/article/details/139669691</a></p>
+<p>如果想安装高级IDE的话（不推荐这么做），只能用CLion等。Visual Studio不支持Linux。</p>
+<blockquote>
+<p>在后续的实验中，如果某步骤写着<code>vim xxx</code>，说明这是让你编辑某文件。编辑文件的方式不仅局限于vim，用gedit等也可。</p>
+</blockquote>
+<h3 id="2317-编译指令gccgmake等">2.3.17 编译指令（gcc、g++、make等）<a class="headerlink" href="#2317-编译指令gccgmake等" title="Permanent link">¶</a></h3>
+<p>我们在编译代码时，需要使用编译器。<code>gcc</code>和<code>g++</code>是常见的编译命令。其中:</p>
+<ul>
+<li><code>gcc</code>会把<code>.c</code>文件当作C语言进行编译，把<code>.cpp</code>文件当作C++语言编译。</li>
+<li><code>g++</code>会把<code>.c</code>和<code>.cpp</code>文件都当作C++语言编译。</li>
+</ul>
+<p>考虑到复杂工程需要编译的文件数量会很多，此时每次都手输编译命令较为繁琐，为此GNU提供了一个make工具，可以按照一个编写好的Makefile文件来完成编译任务。我们将在实验一的第二部分给予重点介绍。</p>
+<blockquote>
+<p>注意：</p>
+<ol>
+<li>这里的“C语言”是C90标准的C语言，<strong>不能使用STL、类、引用、for内定义变量等C++特性</strong>。</li>
+<li>Linux内核是使用上面所述的C语言编写的，而不是C++。</li>
+<li>在编写代码时，请注意代码文件的扩展名命名，和编译指令的选择。</li>
+<li><code>gcc</code>和<code>g++</code>默认是不安装的。如果你想使用，请先使用包管理器安装<code>build-essential</code>包，里面包括<code>gcc</code>、<code>g++</code>等常见编译器，和make工具等。</li>
+</ol>
+</blockquote>
+<p>简单地使用<code>gcc</code>/<code>g++</code>编译的语法是：<code>gcc [-o outfile] infile</code> 。下面是指令的各个参数介绍。如需了解更详尽的使用方法，可参考gcc官方手册：<a href="http://www.gnu.org/software/gcc/">http://www.gnu.org/software/gcc/</a>。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-o outfile</td>
+<td>指定输出的可执行文件的文件名为outfile。如果不指定，会输出为a.out。</td>
+</tr>
+<tr>
+<td>infile</td>
+<td>要编译的gcc文件名。注意绝对路径/相对路径的问题。</td>
+</tr>
+</tbody>
+</table>
+<p>使用<code>make</code>的方法是：在工程目录下直接运行<code>make</code>即可。一些Makefile会提供多种编译选项，如删除编译好的二进制文件(<code>make clean</code>)、编译不同的文件等。这时候需要根据Makefile来确定不同的编译选项。</p>
+<h3 id="2318-gdb调试指令">2.3.18 gdb调试指令<a class="headerlink" href="#2318-gdb调试指令" title="Permanent link">¶</a></h3>
+<p>gdb是一款命令行下常用的调试工具，可以用来打断点、显示变量的内存地址，以及内存地址中的数据等。使用方法是<code>gdb 可执行文件名</code>，即可在gdb下调试某二进制文件。</p>
+<p>gdb需要使用包管理器来安装。（参考<code>2.3.15</code>）</p>
+<p>一般在使用gcc等编译器编译程序的时候，编译器不会把调试信息放进可执行文件里，进而导致gdb知道某段内存里有内容，但并不知道这些内容是变量a还是变量b。或者，gdb知道运行了若干机器指令，但不知道这些机器指令对应哪些C语言代码。所以，在使用gdb时需要在编译时加入<code>-g</code>选项，如：<code>gcc -g -o test test.c</code>来将调试信息加入可执行文件。而Linux内核采取了另一种方式：它把符号表独立成了另一个文件，在调试的时候载入符号表文件就可以达到相同的效果。</p>
+<ul>
+<li>gdb里的常用命令</li>
+</ul>
+<div class="highlight"><pre><span></span><code>r/run<span class="w">                                 </span><span class="c1"># 开始执行程序</span>
+b/break<span class="w"> </span>&lt;location&gt;<span class="w">                    </span><span class="c1"># 在location处添加断点，location可以是代码行数或函数名</span>
+b/break<span class="w"> </span>&lt;location&gt;<span class="w"> </span><span class="k">if</span><span class="w"> </span>&lt;condition&gt;<span class="w">   </span><span class="c1"># 在location处添加断点，仅当condition条件满足才中断运行</span>
+c/continue<span class="w">                          </span><span class="c1"># 继续执行到下一个断点或程序结束</span>
+n/next<span class="w">                                </span><span class="c1"># 运行下一行代码，如果遇到函数调用直接跳到调用结束</span>
+s/step<span class="w">                                </span><span class="c1"># 运行下一行代码，如果遇到函数调用则进入函数内部逐行执行</span>
+ni/nexti<span class="w">                              </span><span class="c1"># 类似next，运行下一行汇编代码（一行c代码可能对应多行汇编代码）</span>
+si/stepi<span class="w">                              </span><span class="c1"># 类似step，运行下一行汇编代码</span>
+l/list<span class="w">                                </span><span class="c1"># 显示当前行代码</span>
+p/print<span class="w"> </span>&lt;expression&gt;<span class="w">                  </span><span class="c1"># 查看表达式expression的值</span>
+q<span class="w">                                     </span><span class="c1"># 退出gdb</span>
+</code></pre></div>
+<h2 id="24-参考资料">2.4 参考资料<a class="headerlink" href="#24-参考资料" title="Permanent link">¶</a></h2>
+<ul>
+<li>Linux命令大全：<a href="https://www.runoob.com/linux/linux-command-manual.html">https://www.runoob.com/linux/linux-command-manual.html</a></li>
+<li>Shell教程：<a href="https://www.runoob.com/linux/linux-shell.html">https://www.runoob.com/linux/linux-shell.html</a></li>
+</ul>
+<div style="page-break-after: always;"></div>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年3月9日 11:13:44 UTC">2026年3月9日</span>
+  </span>
+
+    
+    
+    
+      
+  
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="贡献者">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"></path></svg>
+      
+    </span>
+    <nav>
+      
+    </nav>
+  </span>
+
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚">
+        
+          
+          <a href="../part1/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 在虚拟机下安装Linux系统">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                在虚拟机下安装Linux系统
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../part3/" class="md-footer__link md-footer__link--next" aria-label="下一页: Codia平台介绍">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                Codia平台介绍
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.expand", "navigation.footer", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
