@@ -1,0 +1,49 @@
+# Python related files
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environment
+venv/
+.env/
+*.env
+
+# MkDocs build directory
+site/
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE specific files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Node.js dependencies
+node_modules/
+
+# Compiled files
+*.out
+*.class
+*.exe
+*.o
+*.so
+
+# Temporary files
+*.tmp
+*.swp
+*.bak
+*.old
+
+# Other
+*.lock
+*.gz
+*.zip
+*.tar
+*.rar
+*.7z

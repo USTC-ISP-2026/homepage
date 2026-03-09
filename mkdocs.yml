@@ -108,3 +108,10 @@ extra_javascript:
 
 nav:
   - 首页: index.md
+  - Lab1:
+    - Linux基础&Codia平台介绍: lab1/index.md
+    - 在虚拟机下安装Linux系统: lab1/part1.md
+    - 初探Linux: lab1/part2.md
+    - Codia平台介绍: lab1/part3.md
+    - WSL2: lab1/additional.md
+    - 实验要求与检查: lab1/requirement.md
