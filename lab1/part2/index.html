@@ -858,34 +858,6 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../requirement/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    实验要求与检查
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -1044,34 +1016,6 @@
     
   
     Git工具
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../lab2/requirement/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    实验要求与检查
   
 
     
@@ -1453,7 +1397,7 @@
 <blockquote>
 <p>提示：如果在执行某个操作时报错文件/文件夹不存在，可以在UI界面内手动复制粘贴文件到目标位置（文件所有者为root用户的除外）。</p>
 </blockquote>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="/exp1-part1.assets/image-20250314204308347.png" data-desc-position="bottom"><img src="/exp1-part1.assets/image-20250314204308347.png" style="zoom: 25%;"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image/img_20.png" data-desc-position="bottom"><img alt="img.png" src="../image/img_20.png"></a></p>
 <h2 id="22-终端命令行的使用">2.2 终端（命令行）的使用<a class="headerlink" href="#22-终端命令行的使用" title="Permanent link">¶</a></h2>
 <h3 id="221-打开终端">2.2.1 打开终端<a class="headerlink" href="#221-打开终端" title="Permanent link">¶</a></h3>
 <p>在桌面/文件管理器的空白处右键即可出现“在终端打开”按钮，点击此处即可呼出终端进而在终端中执行相关的Linux指令。注意：终端也是有工作位置的。简单而言，在哪个目录下打开终端，命令就会在哪个目录下执行。终端当前目录一般称为“<strong>工作目录</strong>”。</p>
@@ -1464,32 +1408,35 @@
 <h3 id="222-目录与路径">2.2.2 目录与路径<a class="headerlink" href="#222-目录与路径" title="Permanent link">¶</a></h3>
 <p>Linux与Windows不同，Windows一般会分有多个逻辑磁盘，每个逻辑磁盘各有一棵目录树，但Linux只有一个目录树，磁盘可以作为一棵子树<strong>挂载</strong>到目录树的某个节点。在Linux操作系统中，整个目录树的根节点被称为<strong>根目录</strong>。每个用户拥有一个<strong>主目录</strong>，或称<strong>家目录</strong>，类似windows的<code>C:\Users\用户名</code>。从根目录看，除root用户之外，每个用户的家目录为<code>/home/用户名</code>。</p>
 <p>Linux终端里使用的路径分为<strong>绝对路径</strong>和<strong>相对路径</strong>两种。绝对路径指从根目录算起的路径，相对路径指从工作目录算起的路径。其中，以根目录算起的绝对路径以<code>/</code>开头，以家目录算起的绝对路径以<code>~</code>开头，相对路径不需要<code>/</code>或<code>～</code>开头。</p>
-<blockquote>
-<p>举例：一个名为ustc的用户在他的家目录下创建了一个名为os的目录，在os目录下面又创建了一个名为lab1的目录，则该lab1目录可以表示为：
-* <code>/home/ustc/os/lab1</code>
-* <code>~/os/lab1</code>
-* 如果工作目录在家目录：<code>os/lab1</code>
-* 如果工作目录在os目录：<code>lab1</code></p>
-</blockquote>
+<div class="admonition example">
+<p class="admonition-title">一个名为ustc的用户在他的家目录下创建了一个名为os的目录，在os目录下面又创建了一个名为lab1的目录，则该lab1目录可以表示为：</p>
+<p><code>/home/ustc/os/lab1</code></p>
+<p><code>~/os/lab1</code></p>
+<p>如果工作目录在家目录：<code>os/lab1</code></p>
+<p>如果工作目录在os目录：<code>lab1</code></p>
+</div>
 <p>一些特殊的目录：
 * <code>.</code>代表该目录自身。例：<code>cd .</code>代表原地跳转（<code>cd</code>是切换目录的指令）；
 * <code>..</code>代表该目录的父目录。特别地，根目录的父目录也是自身。
 * 在Linux里，文件名以<code>.</code>开头的文件是隐藏文件（或目录），如何显示它们请参考2.3.3.
   * <code>.</code>和<code>..</code>都是隐藏的目录。</p>
-<blockquote>
-<p>举例：以下几个路径是等价的：
-* <code>/home/ustc/os/lab1</code>
-* <code>/home/ustc/os/././././././lab1</code>
-* <code>/home/ustc/os/../os/lab1</code></p>
-</blockquote>
+<div class="admonition example">
+<p class="admonition-title">以下几个路径是等价的：</p>
+<p><code>/home/ustc/os/lab1</code></p>
+<p><code>/home/ustc/os/././././././lab1</code></p>
+<p><code>/home/ustc/os/../os/lab1</code></p>
+</div>
 <h3 id="223-运行指令">2.2.3 运行指令<a class="headerlink" href="#223-运行指令" title="Permanent link">¶</a></h3>
 <p>在终端中输入可执行文件的路径即可。终端所在路径是程序运行时的路径。需要注意的是，如果运行的二进制文件就在工作目录下，需要在文件名前加上<code>./</code>。</p>
 <blockquote>
 <p>提示：与windows可执行文件扩展名为.exe不同，Linux中，可执行文件一般没有扩展名。例外：gcc在不指定输出文件名的情况下，编译出的可执行文件会带有.out的扩展名。但你也不需要管这个.out，直接运行也是一样的。</p>
-<p>例：有一个可执行文件，其路径为<code>~/os/lab1/testprog</code>。它在运行时会读取一个相对路径为<code>a.txt</code>的文件。
-* 在家目录下运行：需要执行<code>os/lab1/testprog</code>（或<code>~/os/lab1/testprog</code>等绝对路径），程序读取的<code>a.txt</code>在家目录下；
-* 在<code>~/os/lab1</code>下运行：需要执行<code>./testprog</code>(当然你用绝对路径也无所谓)，程序读取的<code>a.txt</code>在<code>~/os/lab1</code>目录下。</p>
 </blockquote>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>有一个可执行文件，其路径为<code>~/os/lab1/testprog</code>。它在运行时会读取一个相对路径为<code>a.txt</code>的文件。</p>
+<p>在家目录下运行：需要执行<code>os/lab1/testprog</code>（或<code>~/os/lab1/testprog</code>等绝对路径），程序读取的<code>a.txt</code>在家目录下；</p>
+<p>在<code>~/os/lab1</code>下运行：需要执行<code>./testprog</code>(当然你用绝对路径也无所谓)，程序读取的<code>a.txt</code>在<code>~/os/lab1</code>目录下。</p>
+</div>
 <p>相关问题：为什么在运行<code>sudo</code>、<code>man</code>等命令时，只需要输入指令名而不需要输入这些指令对应的二进制文件所在的路径？</p>
 <p>一种情况是，这是因为这些指令所在的路径（一般是<code>/usr/bin</code>）被加入到了该用户的<strong>环境变量</strong>中。当终端读取到一个不带路径的命令之后，系统只会在环境变量中搜索，从而方便用户使用。当然，默认被加入环境变量里的路径一般只有一些系统路径，除非自行设置，家目录下面没有目录默认在环境变量中。如感兴趣，修改环境变量的方法可自行搜索了解。</p>
 <p>另一种情况是，部分指令是Shell内建指令（如<code>cd</code>），它们的意义直接由Shell解释，没有对应的二进制文件。此情况可能会在下一实验中详细阐述。</p>
@@ -1531,9 +1478,10 @@
 <li>在shell里，<code>Ctrl+C</code>是终止不是复制。复制的快捷键是<code>Ctrl+Insert</code>或<code>Ctrl+Shift+C</code>，粘贴的快捷键是<code>Shift+Insert</code>或<code>Ctrl+Shift+V</code>。</li>
 </ul>
 <h2 id="23-linux常用指令">2.3 Linux常用指令<a class="headerlink" href="#23-linux常用指令" title="Permanent link">¶</a></h2>
-<blockquote>
-<p>注：一些指令的使用方法详见提供的链接。本部分涉及测验考察，测验方式见文档3.2。</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>一些指令的使用方法详见提供的链接。本部分涉及测验考察，测验方式见文档3.2。</p>
+</div>
 <h3 id="231-man">2.3.1 man<a class="headerlink" href="#231-man" title="Permanent link">¶</a></h3>
 <p>英文缩写：manual</p>
 <p>如果你不知道一条命令的含义，使用<code>man xxx</code>可以显示该命令的使用手册。</p>
@@ -1543,10 +1491,11 @@
 <p>Linux采用<strong>用户组</strong>的概念实现访问控制，其中，只有root用户组才具备管理系统的权限。在<code>sudo</code>出现之前，一般用户管理linux系统的方式是，先用<code>su</code>指令切换到root用户，然后在root用户下进行操作。但是使用<code>su</code>的缺点之一在于必须要先告知root用户的密码，且这种控制方式不够精细。</p>
 <p>为了方便操作，并更加精确地控制权限，<code>sudo</code>用来将root用户的部分权限让渡给普通用户。普通用户只需要输入自己的密码，确认“我是我自己”，就能执行自己拥有的那部分管理员权限。特别地，在Ubuntu下，普通用户默认可以通过<code>sudo</code>取得root用户的所有权限。若想精确地控制每个用户能用<code>sudo</code>干什么，可以参阅<code>visudo</code>。</p>
 <p>如果在输入某个指令后，系统提示权限不够(Permission Denied)，那么在指令前加上<code>sudo</code>一般都能解决问题。</p>
-<blockquote>
-<p>注意1：root用户具备很高的权限。一些需要管理员权限才能执行的指令（如，删除整个磁盘上的内容）会破坏系统。所以在使用<code>sudo</code>时，请务必确认输入的指令没问题。</p>
-<p>注意2：为了防止旁窥者获知密码长度，linux下输入密码不会在屏幕上给出诸如***的回显。输完密码敲回车就行了。</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">注意</p>
+<p>1：root用户具备很高的权限。一些需要管理员权限才能执行的指令（如，删除整个磁盘上的内容）会破坏系统。所以在使用<code>sudo</code>时，请务必确认输入的指令没问题。</p>
+<p>2：为了防止旁窥者获知密码长度，linux下输入密码不会在屏幕上给出诸如***的回显。输完密码敲回车就行了。</p>
+</div>
 <p>常见使用方法：<code>sudo command</code></p>
 <p>例：以普通用户运行<code>apt install vim</code>，会被告知没有权限，因为只有root用户（管理员）才有资格安装软件包。正确的用法是<code>sudo apt install vim</code>。</p>
 <h3 id="233-ls">2.3.3 ls<a class="headerlink" href="#233-ls" title="Permanent link">¶</a></h3>
@@ -1611,25 +1560,25 @@
 <li>从软件源处检查系统中的软件包是否有更新：<code>sudo apt update</code></li>
 </ul>
 <p>其他使用方法参见<a href="https://www.runoob.com/linux/linux-comm-apt.html">Linux apt命令</a>。</p>
-<blockquote>
-<p>其他提示：</p>
-<ul>
-<li>如果报错<code>“无法获得锁 /var/lib/dpkg/lock.....”</code>，这是因为系统在同一时刻只能运行一个apt，请耐心等另一边安装/更新完。Ubuntu的软件包管理器也是一个apt。若你确信没有别的apt在运行，可能是因为没安装完包就关掉了终端或apt。请重启Linux或参考<a href="https://blog.csdn.net/yaoduren/article/details/8561145">此链接</a>。</li>
-<li>如果报错<code>“下列软件包有未满足的依赖关系......”</code>或<code>没有可用的软件包.....，但是它被其他软件包引用了....</code>，可能是因为刚换了源，没等包刷新完就关闭窗口，请手动<code>sudo apt-get update</code>。</li>
-</ul>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">注意</p>
+<p>如果报错<code>“无法获得锁 /var/lib/dpkg/lock.....”</code>，这是因为系统在同一时刻只能运行一个apt，请耐心等另一边安装/更新完。Ubuntu的软件包管理器也是一个apt。若你确信没有别的apt在运行，可能是因为没安装完包就关掉了终端或apt。请重启Linux或参考<a href="https://blog.csdn.net/yaoduren/article/details/8561145">此链接</a>。</p>
+<p>如果报错<code>“下列软件包有未满足的依赖关系......”</code>或<code>没有可用的软件包.....，但是它被其他软件包引用了....</code>，可能是因为刚换了源，没等包刷新完就关闭窗口，请手动<code>sudo apt-get update</code>。</p>
+</div>
 <h3 id="2316-文字编辑器vimgedit等">2.3.16 文字编辑器（vim、gedit等）<a class="headerlink" href="#2316-文字编辑器vimgedit等" title="Permanent link">¶</a></h3>
 <p>Linux系统中，常见的使用命令行的文字编辑器是vim。系统一般并<strong>不</strong>自带vim，需要使用包管理器安装。由于vim的使用方法与我们习惯的的GUI编辑方式有很大差异，所以在这里不详细介绍它的用法。若想了解请参考https://<a href="http://www.runoob.com/linux/linux-vim.html">www.runoob.com/linux/linux-vim.html</a>。</p>
 <p>gedit是Ubuntu使用的Gnome桌面环境<strong>自带</strong>的一款文本编辑器，其使用方法与Windows的记事本(Notepad)大同小异。在这里也不多介绍。在终端里输入<code>gedit</code>回车即可启动gedit。编辑特定的文件的使用方法是<code>gedit 文件名</code>，若输入的文件名不存在，将自动创建新文件。在Ubuntu的图形化界面中直接双击文本文件也可以编辑文件。<strong>但需要注意的是，在编辑一些需要root权限的文件时，直接双击文件不能编辑，只能在终端里<code>sudo gedit 文件名</code>。</strong></p>
-<blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>在命令行下启动gedit会在终端里报warning，忽略即可。<a href="https://askubuntu.com/questions/798935/set-document-metadata-failed-when-i-run-sudo-gedit">参考链接</a></p>
-</blockquote>
+</div>
 <p>如果想使用一些更高级的编辑器，可以考虑安装vscode。安装方法请自行到网上搜索。</p>
 <p>比起在虚拟机内安装vscode，更推荐在主机上安装vscode并用ssh连接虚拟机，可以参考链接：<a href="https://blog.csdn.net/m0_73500130/article/details/139669691">https://blog.csdn.net/m0_73500130/article/details/139669691</a></p>
 <p>如果想安装高级IDE的话（不推荐这么做），只能用CLion等。Visual Studio不支持Linux。</p>
-<blockquote>
-<p>在后续的实验中，如果某步骤写着<code>vim xxx</code>，说明这是让你编辑某文件。编辑文件的方式不仅局限于vim，用gedit等也可。</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>在后续的实验中，如果某步骤写着<code>vim xxx</code>，说明这是让你编辑某文件。编辑文件的方式不仅局限于vim，用gedit、nano等也可。</p>
+</div>
 <h3 id="2317-编译指令gccgmake等">2.3.17 编译指令（gcc、g++、make等）<a class="headerlink" href="#2317-编译指令gccgmake等" title="Permanent link">¶</a></h3>
 <p>我们在编译代码时，需要使用编译器。<code>gcc</code>和<code>g++</code>是常见的编译命令。其中:</p>
 <ul>
@@ -1637,15 +1586,13 @@
 <li><code>g++</code>会把<code>.c</code>和<code>.cpp</code>文件都当作C++语言编译。</li>
 </ul>
 <p>考虑到复杂工程需要编译的文件数量会很多，此时每次都手输编译命令较为繁琐，为此GNU提供了一个make工具，可以按照一个编写好的Makefile文件来完成编译任务。我们将在实验一的第二部分给予重点介绍。</p>
-<blockquote>
-<p>注意：</p>
-<ol>
-<li>这里的“C语言”是C90标准的C语言，<strong>不能使用STL、类、引用、for内定义变量等C++特性</strong>。</li>
-<li>Linux内核是使用上面所述的C语言编写的，而不是C++。</li>
-<li>在编写代码时，请注意代码文件的扩展名命名，和编译指令的选择。</li>
-<li><code>gcc</code>和<code>g++</code>默认是不安装的。如果你想使用，请先使用包管理器安装<code>build-essential</code>包，里面包括<code>gcc</code>、<code>g++</code>等常见编译器，和make工具等。</li>
-</ol>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">注意</p>
+<p>这里的“C语言”是C90标准的C语言，<strong>不能使用STL、类、引用、for内定义变量等C++特性</strong>。</p>
+<p>Linux内核是使用上面所述的C语言编写的，而不是C++。</p>
+<p>在编写代码时，请注意代码文件的扩展名命名，和编译指令的选择。</p>
+<p><code>gcc</code>和<code>g++</code>默认是不安装的。如果你想使用，请先使用包管理器安装<code>build-essential</code>包，里面包括<code>gcc</code>、<code>g++</code>等常见编译器，和make工具等。</p>
+</div>
 <p>简单地使用<code>gcc</code>/<code>g++</code>编译的语法是：<code>gcc [-o outfile] infile</code> 。下面是指令的各个参数介绍。如需了解更详尽的使用方法，可参考gcc官方手册：<a href="http://www.gnu.org/software/gcc/">http://www.gnu.org/software/gcc/</a>。</p>
 <table>
 <thead>
@@ -1690,7 +1637,6 @@ q<span class="w">                                     </span><span class="c1"># 
 <li>Linux命令大全：<a href="https://www.runoob.com/linux/linux-command-manual.html">https://www.runoob.com/linux/linux-command-manual.html</a></li>
 <li>Shell教程：<a href="https://www.runoob.com/linux/linux-shell.html">https://www.runoob.com/linux/linux-shell.html</a></li>
 </ul>
-<div style="page-break-after: always;"></div>
 
 
 
@@ -1711,7 +1657,7 @@ q<span class="w">                                     </span><span class="c1"># 
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年3月9日 11:16:16 UTC">2026年3月9日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年3月11日 06:05:04 UTC">2026年3月11日</span>
   </span>
 
     

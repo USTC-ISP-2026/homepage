@@ -503,34 +503,6 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../lab1/requirement/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    实验要求与检查
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -870,34 +842,6 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../requirement/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    实验要求与检查
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -1070,9 +1014,10 @@
 
   <h1>Make工具</h1>
 
-<blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>在上一章，我们还在手动输入 gcc main.c -o main。如果项目有 100 个源文件，手动编译不仅是“体力活”，更是“精细活”——改动一个文件，该重编哪些？漏掉一个怎么办？make 工具因此诞生。它不仅能一键完成所有工作，还能聪明地只处理“变动过”的部分。</p>
-</blockquote>
+</div>
 <h2 id="11-为什么需要-make">1.1 为什么需要 Make？<a class="headerlink" href="#11-为什么需要-make" title="Permanent link">¶</a></h2>
 <p>在大型 C/C++ 项目中，通常会有许多源文件。
 1. <strong>自动化</strong>：一键完成编译、链接甚至打包。
@@ -1094,14 +1039,14 @@
 <p>Makefile 诞生于 1976 年，当时的作者为了方便，规定命令前必须是 \t (Tab)。这个“设计缺陷”保留了 50 年。
 所以：命令前必须是一个 <strong>Tab 字符</strong>，不能是空格！</p>
 </div>
-<p>{{&lt; details title="递归检查" &gt;}}</p>
-<p>这里的核心逻辑是：递归检查</p>
+<div class="admonition example">
+<p class="admonition-title">这里的核心逻辑是：递归检查</p>
 <p>当你告诉 <code>make</code> 去生成 <code>target</code> 时，它会启动一个<strong>递归过程</strong>：</p>
 <ol>
 <li><strong>检查依赖是否存在？</strong> 如果 <code>dependencies</code> 里的某个文件不存在，<code>make</code> 会在 Makefile 中寻找是否有其他规则可以生成这个“原材料”。</li>
 <li><strong>检查是否需要更新？</strong> 如果 <code>dependencies</code> 中任何一个文件的“最后修改时间”比 <code>target</code> 更新，<code>make</code> 就会重新执行 <code>command</code>。</li>
 </ol>
-<p>{{&lt; /details &gt;}}</p>
+</div>
 <h3 id="122-简单示例">1.2.2 简单示例<a class="headerlink" href="#122-简单示例" title="Permanent link">¶</a></h3>
 <p>假设项目结构如下：
 * <code>main.c</code> (调用了 <code>tool.h</code> 中的函数)
@@ -1126,7 +1071,8 @@
 <span class="nf">clean</span><span class="o">:</span>
 <span class="w">    </span>rm<span class="w"> </span>-f<span class="w"> </span>main<span class="w"> </span>*.o
 </code></pre></div>
-<p>{{&lt; details title="编译过程" &gt;}}</p>
+<div class="admonition example">
+<p class="admonition-title">编译过程？</p>
 <p><strong>当你输入 <code>make</code> 时，幕后发生了什么？</strong></p>
 <ol>
 <li><code>make</code> 看到第一个目标是 <code>main</code>，它发现 <code>main</code> 依赖 <code>main.o</code> 和 <code>tool.o</code>。</li>
@@ -1134,7 +1080,7 @@
 <li>它再去处理 <code>tool.o</code>，发现有<strong>规则 C</strong>。同样检查时间戳，必要时执行 <code>gcc -c tool.c</code>。</li>
 <li>当“原材料” <code>main.o</code> 和 <code>tool.o</code> 都准备好（或更新完）后，它最后执行<strong>规则 A</strong> 里的链接命令。</li>
 </ol>
-<p>{{&lt; /details &gt;}}</p>
+</div>
 <h2 id="13-变量与自动变量">1.3 变量与自动变量<a class="headerlink" href="#13-变量与自动变量" title="Permanent link">¶</a></h2>
 <p>在上面的例子中，如果我们想把编译器从 <code>gcc</code> 换成 <code>clang</code>，或者增加编译选项 <code>-O2</code>（优化级别），我们需要修改每一行命令。这显然不符合程序员“偷懒”的美德。我们可以使用变量和模式匹配来简化。</p>
 <h3 id="131-使用变量-variables">1.3.1 使用变量 (Variables)<a class="headerlink" href="#131-使用变量-variables" title="Permanent link">¶</a></h3>
@@ -1147,10 +1093,10 @@
 <span class="nf">$(TARGET)</span><span class="o">:</span><span class="w"> </span><span class="k">$(</span><span class="nv">OBJS</span><span class="k">)</span>
 <span class="w">    </span><span class="k">$(</span>CC<span class="k">)</span><span class="w"> </span><span class="k">$(</span>CFLAGS<span class="k">)</span><span class="w"> </span>-o<span class="w"> </span><span class="k">$(</span>TARGET<span class="k">)</span><span class="w"> </span><span class="k">$(</span>OBJS<span class="k">)</span>
 </code></pre></div>
-<blockquote>
-<p>[!Tip]
-变量名通常约定俗成用大写。<code>CC</code> 代表 C Compiler，<code>CFLAGS</code> 代表 C Flags（编译参数）。</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Tip</p>
+<p>变量名通常约定俗成用大写。<code>CC</code> 代表 C Compiler，<code>CFLAGS</code> 代表 C Flags（编译参数）。</p>
+</div>
 <h3 id="132-模式规则与自动变量-pattern-rules">1.3.2 模式规则与自动变量 (Pattern Rules)<a class="headerlink" href="#132-模式规则与自动变量-pattern-rules" title="Permanent link">¶</a></h3>
 <p>对于几十个 <code>.c</code> 文件，我们不可能每个都写一遍规则。Makefile 提供了一种通配符 <code>%</code>（类似于正则表达式中的 <code>*</code>）。</p>
 <p>在模式规则中，由于文件名是动态确定的，我们无法写死文件名。因此，Makefile 提供了三个<strong>自动变量</strong>：</p>
@@ -1164,7 +1110,8 @@
 <span class="nf">%.o</span><span class="o">:</span><span class="w"> </span>%.<span class="n">c</span>
 <span class="w">    </span><span class="k">$(</span>CC<span class="k">)</span><span class="w"> </span><span class="k">$(</span>CFLAGS<span class="k">)</span><span class="w"> </span>-c<span class="w"> </span>$&lt;<span class="w"> </span>-o<span class="w"> </span><span class="nv">$@</span>
 </code></pre></div>
-<p>{{&lt; details title="发生了什么" &gt;}}</p>
+<div class="admonition example">
+<p class="admonition-title">发生了什么？</p>
 <p>假设 <code>make</code> 现在正在处理 <code>main.o</code> 这个目标：</p>
 <ol>
 <li><strong>模式匹配</strong>：<code>%.o</code> 匹配到了 <code>main.o</code>，于是 <code>%</code> 就是 <code>main</code>。</li>
@@ -1174,7 +1121,7 @@
 <li><strong><code>$&lt;</code></strong> (第一个依赖) -&gt; <code>main.c</code></li>
 <li><strong>最终生成的命令</strong>：<code>gcc -Wall -g -c main.c -o main.o</code></li>
 </ol>
-<p>{{&lt; /details &gt;}}</p>
+</div>
 <h3 id="133-演示">1.3.3 演示<a class="headerlink" href="#133-演示" title="Permanent link">¶</a></h3>
 <p>我们将 1.2.2 的冗长代码简化为“工业级”写法：</p>
 <div class="highlight"><pre><span></span><code><span class="nv">CC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>gcc
@@ -1198,22 +1145,18 @@
 <span class="w">    </span>rm<span class="w"> </span>-f<span class="w"> </span><span class="k">$(</span>TARGET<span class="k">)</span><span class="w"> </span><span class="k">$(</span>OBJS<span class="k">)</span>
 </code></pre></div>
 <h2 id="14-qa">1.4 Q&amp;A<a class="headerlink" href="#14-qa" title="Permanent link">¶</a></h2>
-<ul>
-<li><strong>Q: 我输入 <code>make</code> 提示 <code>make: 'main' is up to date.</code> 是什么意思？</strong></li>
-<li>
+<details class="question">
+<summary><strong>Q: 我输入 <code>make</code> 提示 <code>make: 'main' is up to date.</code> 是什么意思？</strong></summary>
 <p>A: 这说明你自上次编译以来没改过代码。如果你非要重编，可以先 <code>make clean</code> 再 <code>make</code>。</p>
-</li>
-<li>
-<p><strong>Q: 为什么提示 <code>missing separator. Stop.</code>？</strong></p>
-</li>
-<li>
+</details>
+<details class="question">
+<summary><strong>Q: 为什么提示 <code>missing separator. Stop.</code>？</strong></summary>
 <p>A: 检查一下！你的命令前面是不是用了空格而不是 <strong>Tab</strong>？</p>
-</li>
-<li>
-<p><strong>Q: 为什么头文件 <code>.h</code> 不需要写在 <code>gcc -c</code> 命令里，却要写在依赖列表里？</strong></p>
-</li>
-<li>A: 编译器会自动去找 <code>#include</code> 的头文件，但 <code>make</code> 需要你显式告诉它：如果 <code>.h</code> 变了，对应的 <code>.o</code> 也得重编。</li>
-</ul>
+</details>
+<details class="question">
+<summary><strong>Q: 为什么头文件 <code>.h</code> 不需要写在 <code>gcc -c</code> 命令里，却要写在依赖列表里？</strong></summary>
+<p>A: 编译器会自动去找 <code>#include</code> 的头文件，但 <code>make</code> 需要你显式告诉它：如果 <code>.h</code> 变了，对应的 <code>.o</code> 也得重编。</p>
+</details>
 
 
 
@@ -1234,7 +1177,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年3月11日 05:03:53 UTC">2026年3月11日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年3月11日 06:05:04 UTC">2026年3月11日</span>
   </span>
 
     
@@ -1245,11 +1188,12 @@
   <span class="md-source-file__fact">
     <span class="md-icon" title="贡献者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"></path></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"></path></svg>
       
     </span>
     <nav>
       
+        <a href="mailto:1002682355@qq.com">Terialion</a>
     </nav>
   </span>
 

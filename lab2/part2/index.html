@@ -503,34 +503,6 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../lab1/requirement/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    实验要求与检查
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -848,34 +820,6 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../requirement/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    实验要求与检查
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -1053,10 +997,10 @@
 <span class="c"># 4. 告诉 CMake：我要生成一个叫 hello 的程序，源码是这些</span>
 <span class="nb">add_executable</span><span class="p">(</span><span class="s">hello</span><span class="w"> </span><span class="s">main.c</span><span class="w"> </span><span class="s">tool.c</span><span class="p">)</span>
 </code></pre></div>
-<blockquote>
-<p>[!Note]
-<strong>CMake 的优势</strong>：你发现了吗？我们<strong>没有</strong>在这里手动写 <code>.h</code> 的依赖关系。CMake 会在生成构建系统时，自动扫描源码中的 <code>#include</code>，并帮你处理好依赖树。</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>CMake 的优势</strong>：你发现了吗？我们<strong>没有</strong>在这里手动写 <code>.h</code> 的依赖关系。CMake 会在生成构建系统时，自动扫描源码中的 <code>#include</code>，并帮你处理好依赖树。</p>
+</div>
 <hr>
 <h2 id="23-标准构建流程外部构建-out-of-source-build">2.3 标准构建流程：外部构建 (Out-of-source Build)<a class="headerlink" href="#23-标准构建流程外部构建-out-of-source-build" title="Permanent link">¶</a></h2>
 <p>在运行 CMake 时，会产生大量的中间缓存文件（如 <code>CMakeCache.txt</code>, <code>CMakeFiles/</code>）。如果直接在源码目录下运行，你的代码文件夹会瞬间变得极其混乱。</p>
@@ -1122,22 +1066,18 @@ make<span class="w">           </span><span class="c1"># 4. 此时 Makefile 已�
 </table>
 <hr>
 <h2 id="26-qa-与避坑指南">2.6 Q&amp;A 与避坑指南<a class="headerlink" href="#26-qa-与避坑指南" title="Permanent link">¶</a></h2>
-<ul>
-<li><strong>Q: <code>cmake ..</code> 报错 <code>CMakeLists.txt not found</code>？</strong></li>
-<li>
+<details class="question">
+<summary><strong>Q: <code>cmake ..</code> 报错 <code>CMakeLists.txt not found</code>？</strong></summary>
 <p>A: 检查你是否在 <code>build</code> 目录下，且 <code>..</code> 路径是否正确指向了包含 <code>CMakeLists.txt</code> 的那个文件夹。</p>
-</li>
-<li>
-<p><strong>Q: 我修改了代码，需要重新运行 <code>cmake ..</code> 吗？</strong></p>
-</li>
-<li>
+</details>
+<details class="question">
+<summary><strong>Q: 我修改了代码，需要重新运行 <code>cmake ..</code> 吗？</strong></summary>
 <p>A: 通常不需要。直接在 <code>build</code> 目录下运行 <code>make</code> 即可。生成的 Makefile 非常聪明，它如果检测到 <code>CMakeLists.txt</code> 变了，会自己触发 CMake 更新。</p>
-</li>
-<li>
-<p><strong>Q: 为什么生成的 <code>build</code> 目录下有几百个文件？</strong></p>
-</li>
-<li>A: 别担心，这就是为什么我们要建 <code>build</code> 文件夹的原因。如果你想“彻底清理”编译产物，直接 <code>rm -rf build</code> 即可，完全不会伤及源码。</li>
-</ul>
+</details>
+<details class="question">
+<summary><strong>Q: 为什么生成的 <code>build</code> 目录下有几百个文件？</strong></summary>
+<p>A: 别担心，这就是为什么我们要建 <code>build</code> 文件夹的原因。如果你想“彻底清理”编译产物，直接 <code>rm -rf build</code> 即可，完全不会伤及源码。</p>
+</details>
 
 
 
@@ -1158,7 +1098,7 @@ make<span class="w">           </span><span class="c1"># 4. 此时 Makefile 已�
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年3月11日 05:03:53 UTC">2026年3月11日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年3月11日 06:05:04 UTC">2026年3月11日</span>
   </span>
 
     
@@ -1169,11 +1109,12 @@ make<span class="w">           </span><span class="c1"># 4. 此时 Makefile 已�
   <span class="md-source-file__fact">
     <span class="md-icon" title="贡献者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"></path></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"></path></svg>
       
     </span>
     <nav>
       
+        <a href="mailto:1002682355@qq.com">Terialion</a>
     </nav>
   </span>
 
