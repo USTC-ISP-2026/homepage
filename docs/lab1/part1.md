@@ -3,10 +3,11 @@ title: 章节一：在虚拟机下安装Linux系统（选做）
 weight: 11
 ---
 
-> 提示：
->
-> - 本部分属于初学者指南。我们不限制环境的使用。你可以使用机房环境、双系统或其他linux发行版完成
-> - 本课程推荐使用机房环境、VMware虚拟机来完成实验
+!!! Note
+
+      本部分属于初学者指南。我们不限制环境的使用。你可以使用机房环境、双系统或其他linux发行版完成
+      
+      本课程推荐使用机房环境、VMware虚拟机来完成实验
 
 ## 1.0 若干名词解释
 
@@ -32,19 +33,19 @@ Ubuntu 24.04.4 LTS 安装镜像文件（下载完成之后，你不需要打开�
 
 1. 访问[BROADCOM官网](https://support.broadcom.com/web/ecx/home)，在右上角注册账号并登录。
 
-<img src="/exp1-part1.assets/image-20250314155609241.png" alt="image-20250314155609241" style="zoom: 33%;" />
+    ![img.png](./image/img1.png)
 
 2. 访问[https://support.broadcom.com/group/ecx/productdownloads?subfamily=VMware%20Workstation%20Pro&freeDownloads=true](https://support.broadcom.com/group/ecx/productdownloads?subfamily=VMware%20Workstation%20Pro&freeDownloads=true)，你会看到25H2和17.0两种类型的VMware Workstation Pro，前者VMware 25H2无默认中文环境(可自行搜索配置中文环境教程)，后者VMware 17.0有默认中文环境，展开`VMware Workstation Pro 25H2 for Windows`或`VMware Workstation Pro 17.0 for Windows`，点击最新版本。
 
-<img src="/exp1-part1.assets/choose_vmware_version.png" alt="choose_vmware_version" style="zoom: 25%;" />
+    ![img.png](./image/img2.png)
 
 3. 勾选`I agree to the Terms and Conditions `，点击下载图标下载(图中是17.6.3版本，建议选择17.6.4版本或25H2u1版本)。
 
-<img src="/exp1-part1.assets/image-20250314160535907.png" alt="image-20250314160535907" style="zoom: 25%;" />
+    ![img.png](image/img3.png)
 
 4. 正常应该是直接开始下载，如果弹出如下界面，补全相关信息，点击提交，再按照第三步操作一遍即可。
 
-<img src="/exp1-part1.assets/image-20250314160753049.png" alt="image-20250314160753049" style="zoom:25%;" />
+    ![img.png](image/img4.png)
 
 安装VMware的步骤较为简单，运行安装程序即可，在此不表。
 
@@ -56,24 +57,22 @@ Ubuntu 24.04.4 LTS 安装镜像文件（下载完成之后，你不需要打开�
 
 左上角菜单栏单击`文件`，点击`新建虚拟机`。
 
-<img src="/exp1-part1.assets/image-20250314163948960.png" alt="image-20250314163948960" style="zoom: 50%;" />
+![img.png](image/img5.png)
 
 在打开的窗口选择`典型（推荐）`，点击`下一步`   。
-
-<img src="/exp1-part1.assets/image-20250314164028113.png" alt="image-20250314164028113" style="zoom: 50%;" />
+![img.png](image/img.png)
 
 选择`稍后安装操作系统`，点击`下一步`。
 
-> 请不要在这里选择安装程序光盘镜像文件，我们会在稍后再选择。
->
-> 此处选择会触发自动安装，后续实验可能会出现问题。
+!!! Note "请不要在这里选择安装程序光盘镜像文件，我们会在稍后再选择。"
+   
+      此处选择会触发自动安装，后续实验可能会出现问题。
 
-<img src="/exp1-part1.assets/image-20250314164941858.png" alt="image-20250314164941858" style="zoom: 50%;" />
+![img.png](image/img6.png)
 
 客户机操作系统选择`Linux`，版本选择`Ubuntu 64 位`。
 
-<img src="/exp1-part1.assets/image-20250314165150175.png" alt="image-20250314165150175" style="zoom:50%;" />
-
+![img_2.png](image/img_2.png)
 
 
 ### 1.3.2 设置虚拟机名称和文件存放位置
@@ -89,7 +88,7 @@ Ubuntu 24.04.4 LTS 安装镜像文件（下载完成之后，你不需要打开�
 
 > 警告：如果磁盘空间不够，Linux启动会黑屏进不去图形界面，需要在命令模式下删除一些文件后重启才能进入图形界面。一些虚拟机具备“扩展磁盘容量”的功能，但是根据实际测试，发现很多时候反而会让虚拟机直接黑屏。
 
-<img src="/exp1-part1.assets/image-20250314165715392.png" alt="image-20250314165715392" style="zoom: 67%;" />
+![img_3.png](image/img_3.png)
 
 ### 1.3.4 硬件配置
 
@@ -99,23 +98,21 @@ Ubuntu 24.04.4 LTS 安装镜像文件（下载完成之后，你不需要打开�
 >
 > 为虚拟机分配更多的CPU内核数量有助于提高虚拟机的性能。注意，给虚拟机分配的内核不是被虚拟机独占的。就算为虚拟机分配宿主机相同的内核数量，也毫无问题。
 
-<img src="/exp1-part1.assets/image-20250314170024532.png" alt="image-20250314170024532" style="zoom:50%;" />
-
+![img_4.png](image/img_4.png)
 
 ### 1.3.5 选择操作系统镜像
 
 右键点击左侧侧边栏中我们创建的虚拟机，然后点击`设置`。
 
-<img src="/exp1-part1.assets/image-20250314170510468.png" alt="image-20250314170510468" style="zoom: 33%;" />
+![img_5.png](image/img_5.png)
 
 在设置界面，点击`CD/DVD(SATA)`，在右侧，选择`使用ISO映像文件`，点击`浏览`，选择我们之前下载的Ubuntu 24.04.2的镜像文件，点击`确定`保存设置。
 
-<img src="/exp1-part1.assets/image-20250314170709698.png" alt="image-20250314170709698" style="zoom: 33%;" />
+![img_6.png](image/img_6.png)
 
 在我们创建的虚拟机的选项卡中，点击`开启此虚拟机`，启动虚拟机，准备安装Ubuntu。
 
-<img src="/exp1-part1.assets/image-20250314171054916.png" alt="image-20250314171054916" style="zoom: 33%;" />
-
+![img_7.png](image/img_7.png)
 
 
 ### 1.3.6 安装Ubuntu
@@ -126,48 +123,47 @@ Ubuntu 24.04.4 LTS 安装镜像文件（下载完成之后，你不需要打开�
 
 虚拟机启动以后会弹出如下界面，选择`Try or Install Ubuntu`，按回车键选择。
 
-<img src="/exp1-part1.assets/image-20250314200018191.png" alt="image-20250314200018191" style="zoom:50%;" />
+![img_8.png](image/img_8.png)
 
 接下来将进入Ubuntu安装程序，选择语言为`中文（简体）`：
 
-<img src="/exp1-part1.assets/image-20250314200303953.png" alt="image-20250314200303953" style="zoom: 33%;" />
+![img_9.png](image/img_9.png)
 
 键盘布局选择`汉语`：
 
-<img src="/exp1-part1.assets/image-20250314200401562.png" alt="image-20250314200401562" style="zoom: 33%;" />
+![img_10.png](image/img_10.png)
 
 在更新可用界面，不建议选`现在更新`。因为国内默认的下载源速度较慢，换源之后速度才快。此处点击`跳过`，稍后我们进入系统换源以后再更新。
 
-<img src="/exp1-part1.assets/image-20250314200452000.png" alt="image-20250314200452000" style="zoom: 33%;" />
+![img_11.png](image/img_11.png)
 
 安装类型界面，因为虚拟机的磁盘本来就是空的，所以安装类型选择`擦除磁盘并安装Ubuntu`。
 
 > 警告：在安装双系统时，不要选这个，否则后果自负。
 
-<img src="/exp1-part1.assets/image-20250314200610851.png" alt="image-20250314200610851" style="zoom: 33%;" />
+![img_12.png](image/img_12.png)
 
 设置账户界面，随便编一个姓名、计算机名、用户名，然后设置密码。
 
 > 警告：请一定要记住密码。否则会进不去系统。
 
-<img src="/exp1-part1.assets/image-20250314200649270.png" alt="image-20250314200649270" style="zoom: 33%;" />
+![img_13.png](image/img_13.png)
 
 时去选择界面，时区位置默认上海即可。
 
-<img src="/exp1-part1.assets/image-20250314200746145.png" alt="image-20250314200746145" style="zoom: 33%;" />
+![img_14.png](image/img_14.png)
 
 最后等待安装完成即可，安装完成之后系统会提示重启，按照提示重启即可。
 
-<img src="/exp1-part1.assets/image-20250314201427567.png" alt="image-20250314201427567" style="zoom: 33%;" />
+![img_15.png](image/img_15.png)
 
 重启可能会遇到如下情况，提示需要移除安装光盘。
 
-<img src="/exp1-part1.assets/image-20250314201958353.png" alt="image-20250314201958353" style="zoom: 33%;" />
+![img_16.png](image/img_16.png)
 
 按照`1.3.5`章节，打开虚拟机设置界面，将`启动时连接`取消勾选，再点击确定保存。然后回到虚拟机界面，点击回车键，即可正常进入系统。
 
-<img src="/exp1-part1.assets/image-20250314202238549.png" alt="image-20250314202238549" style="zoom: 33%;" />
-
+![img_17.png](image/img_17.png)
 
 
 ## 1.4 其他必要设置
@@ -176,7 +172,7 @@ Ubuntu 24.04.4 LTS 安装镜像文件（下载完成之后，你不需要打开�
 
 Ubuntu自带的软件源较慢，这会导致我们安装软件包时花更多的时间下载。所以要更换软件源为科大镜像。进入虚拟机后，点击左下角的进入应用菜单，找到并进入“软件更新器”。进入之后它会检查更新，最后会跳出一个“是否向安装更新”的提示。**不要安装**，并点击“设置”。
 
-<img src="/exp1-part1.assets/image-20250314202455020.png" alt="image-20250314202455020" style="zoom: 67%;" />
+![img_18.png](image/img_18.png)
 
 更改“Ubuntu”软件选项卡的“下载自”为“其他站点”，在弹出的“选择下载服务器”窗口中选择“中国-mirrors.ustc.edu.cn”。输入密码即可完成修改。
 
@@ -198,8 +194,6 @@ VMware默认可以进行主机与虚拟机之间的文件拖放，因为VMware�
 
 如何关闭Ubuntu：如下图所示，点屏幕右上角-关机。
 
-<img src="/exp1-part1.assets/image-20250314203058995.png" alt="image-20250314203058995" style="zoom:50%;" />
+![img_19.png](image/img_19.png)
 
 直接点虚拟机右上角的叉也可以关机。
-
-<div STYLE="page-break-after: always;"></div>

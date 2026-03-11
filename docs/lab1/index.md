@@ -21,7 +21,7 @@ weight: 10
 
 -  3.6晚实验课，讲解实验
 
-检查时间、地点：周五晚19: 30~22: 30，电三楼406/408。
+检查时间、地点：周五晚19: 30~22: 30，电三楼516/519。
 
 ## 为什么要做这个实验
 
@@ -33,10 +33,7 @@ weight: 10
 
 ## 实验内容
 
-{{< cards >}}
-  {{< card link="./part1" title="章节一：在虚拟机下安装Linux系统" tag= "选做" >}}
-  {{< card link="./part2" title="章节二：初探Linux"  >}}
-  {{< card link="./part3" title="章节三：Codia平台介绍"  >}}
-  {{< card link="./additional" title="补充材料：WSL、Vlab与一些小工具"  >}}
-  {{< card link="./requirement" title="实验要求与检查"  >}}
-{{< /cards >}}
+  - [章节一：在虚拟机下安装Linux系统](./part1)
+  - [章节二：初探Linux](./part2)
+  - [补充材料：WSL、Vlab与一些小工具](./additional)
+  - [实验要求与检查](./requirement)
