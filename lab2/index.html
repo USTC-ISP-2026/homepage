@@ -6,28 +6,28 @@
       
       
       
-        <link rel="prev" href="../part2/">
+        <link rel="prev" href="../lab1/requirement/">
       
       
-        <link rel="next" href="../requirement/">
+        <link rel="next" href="part1/">
       
       
         
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
     
     
       
-        <title>补充材料 - USTC 系统程序设计基础</title>
+        <title>实验二：基础工具——make/cmake与git的使用 - USTC 系统程序设计基础</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -46,21 +46,21 @@
       
     
     
-      <link rel="stylesheet" href="../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../stylesheets/extra.css">
     
-      <link rel="stylesheet" href="../../css/extra.css">
+      <link rel="stylesheet" href="../css/extra.css">
     
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css">
     
-      <link rel="stylesheet" href="../../styles.css">
+      <link rel="stylesheet" href="../styles.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
-  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+  <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
             html.glightbox-open { overflow: initial; height: 100%; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
@@ -89,7 +89,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#windows-subsystem-for-linux-wsl-2-指南" class="md-skip">
+        <a href="#实验简介" class="md-skip">
           跳转至
         </a>
       
@@ -105,7 +105,7 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="../.." title="USTC 系统程序设计基础" class="md-header__button md-logo" aria-label="USTC 系统程序设计基础" data-md-component="logo">
+    <a href=".." title="USTC 系统程序设计基础" class="md-header__button md-logo" aria-label="USTC 系统程序设计基础" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M348.8 32C340.7 46.1 336 62.5 336 80v16H64v224h272v64H64c-35.3 0-64-28.7-64-64V96c0-35.3 28.7-64 64-64zM336 432c0 17.5 4.7 33.9 12.8 48H120c-13.3 0-24-10.7-24-24s10.7-24 24-24zm96-400h96c26.5 0 48 21.5 48 48v352c0 26.5-21.5 48-48 48h-96c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48m24 64c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24zm0 96c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24zm56 144a32 32 0 1 0-64 0 32 32 0 1 0 64 0"></path></svg>
@@ -125,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              补充材料
+              实验二：基础工具——make/cmake与git的使用
             
           </span>
         </div>
@@ -218,7 +218,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
+      <a href=".." class="md-tabs__link">
         
   
   
@@ -235,13 +235,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../lab1/" class="md-tabs__link">
           
   
   
@@ -257,11 +255,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../lab2/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
           
   
   
@@ -301,7 +301,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="USTC 系统程序设计基础" class="md-nav__button md-logo" aria-label="USTC 系统程序设计基础" data-md-component="logo">
+    <a href=".." title="USTC 系统程序设计基础" class="md-nav__button md-logo" aria-label="USTC 系统程序设计基础" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M348.8 32C340.7 46.1 336 62.5 336 80v16H64v224h272v64H64c-35.3 0-64-28.7-64-64V96c0-35.3 28.7-64 64-64zM336 432c0 17.5 4.7 33.9 12.8 48H120c-13.3 0-24-10.7-24-24s10.7-24 24-24zm96-400h96c26.5 0 48 21.5 48 48v352c0 26.5-21.5 48-48 48h-96c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48m24 64c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24zm0 96c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24zm56 144a32 32 0 1 0-64 0 32 32 0 1 0 64 0"></path></svg>
@@ -319,7 +319,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href=".." class="md-nav__link">
         
   
   
@@ -343,29 +343,26 @@
       
   
   
-    
   
   
-  
     
     
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked="">
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2">
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
             
   
   
@@ -383,7 +380,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -401,7 +398,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../" class="md-nav__link">
+      <a href="../lab1/" class="md-nav__link">
         
   
   
@@ -429,7 +426,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../part1/" class="md-nav__link">
+      <a href="../lab1/part1/" class="md-nav__link">
         
   
   
@@ -457,7 +454,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../part2/" class="md-nav__link">
+      <a href="../lab1/part2/" class="md-nav__link">
         
   
   
@@ -482,35 +479,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    WSL2
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../lab1/additional/" class="md-nav__link">
         
   
   
@@ -526,213 +498,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-      
-        <li class="md-nav__item">
-  <a href="#windows-subsystem-for-linux-wsl-2-指南" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Windows Subsystem for Linux (WSL 2) 指南
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Windows Subsystem for Linux (WSL 2) 指南">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-一键安装" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. 一键安装
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-注意事项与常用命令" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. 注意事项与常用命令
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-配合-vs-code-推荐方案" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. 配合 VS Code (推荐方案)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vlab-云实验平台使用指南" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        VLab 云实验平台使用指南
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="VLab 云实验平台使用指南">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-创建环境" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. 创建环境
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-远程连接与访问规则" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. 远程连接与访问规则
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ssh连接你的开发世界" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        SSH：连接你的开发世界
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="SSH：连接你的开发世界">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-基础连接" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. 基础连接
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-vs-code-remote-ssh" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. VS Code Remote SSH
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-告别密码免密登录" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. 告别密码：免密登录
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-极致配置sshconfig" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. 极致配置：.ssh/config
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5-常见问题排查-troubleshooting" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5. 常见问题排查 (Troubleshooting)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#服务器永不掉线tmux-简要教程" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        服务器永不掉线：Tmux 简要教程
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="服务器永不掉线：Tmux 简要教程">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-核心操作" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. 核心操作
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -745,7 +510,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../requirement/" class="md-nav__link">
+      <a href="../lab1/requirement/" class="md-nav__link">
         
   
   
@@ -777,26 +542,29 @@
       
   
   
+    
   
   
+  
     
     
     
     
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
       
         
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked="">
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3">
-        
-          
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
             
   
   
@@ -814,7 +582,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -829,10 +597,35 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../lab2/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Make&amp;CMake&amp;Git介绍
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -848,6 +641,135 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#实验简介" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        实验简介
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#实验目的" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        实验目的
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#实验时间安排" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        实验时间安排
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#实验内容" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        实验内容
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="实验内容">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#章节预览" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        章节预览
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="章节预览">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-make-简介与-makefile-编写" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Make 简介与 Makefile 编写
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-现代构建系统cmake" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 现代构建系统：CMake
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-版本控制工具git" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 版本控制工具：Git
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#助教提示-tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        助教提示 (TIPS)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -860,7 +782,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab2/part1/" class="md-nav__link">
+      <a href="part1/" class="md-nav__link">
         
   
   
@@ -888,7 +810,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab2/part2/" class="md-nav__link">
+      <a href="part2/" class="md-nav__link">
         
   
   
@@ -916,7 +838,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab2/part3/" class="md-nav__link">
+      <a href="part3/" class="md-nav__link">
         
   
   
@@ -944,7 +866,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab2/requirement/" class="md-nav__link">
+      <a href="requirement/" class="md-nav__link">
         
   
   
@@ -997,22 +919,67 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#windows-subsystem-for-linux-wsl-2-指南" class="md-nav__link">
+  <a href="#实验简介" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Windows Subsystem for Linux (WSL 2) 指南
+        实验简介
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Windows Subsystem for Linux (WSL 2) 指南">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#实验目的" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        实验目的
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#实验时间安排" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        实验时间安排
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#实验内容" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        实验内容
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="实验内容">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-一键安装" class="md-nav__link">
+  <a href="#章节预览" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. 一键安装
+        章节预览
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="章节预览">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-make-简介与-makefile-编写" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Make 简介与 Makefile 编写
       
     </span>
   </a>
@@ -1020,10 +987,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-注意事项与常用命令" class="md-nav__link">
+  <a href="#2-现代构建系统cmake" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. 注意事项与常用命令
+        2. 现代构建系统：CMake
       
     </span>
   </a>
@@ -1031,10 +998,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-配合-vs-code-推荐方案" class="md-nav__link">
+  <a href="#3-版本控制工具git" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. 配合 VS Code (推荐方案)
+        3. 版本控制工具：Git
       
     </span>
   </a>
@@ -1045,135 +1012,12 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#vlab-云实验平台使用指南" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        VLab 云实验平台使用指南
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="VLab 云实验平台使用指南">
-      <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-创建环境" class="md-nav__link">
+  <a href="#助教提示-tips" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. 创建环境
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-远程连接与访问规则" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. 远程连接与访问规则
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ssh连接你的开发世界" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        SSH：连接你的开发世界
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="SSH：连接你的开发世界">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-基础连接" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. 基础连接
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-vs-code-remote-ssh" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. VS Code Remote SSH
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-告别密码免密登录" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. 告别密码：免密登录
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-极致配置sshconfig" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. 极致配置：.ssh/config
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5-常见问题排查-troubleshooting" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5. 常见问题排查 (Troubleshooting)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#服务器永不掉线tmux-简要教程" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        服务器永不掉线：Tmux 简要教程
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="服务器永不掉线：Tmux 简要教程">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-核心操作" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. 核心操作
+        助教提示 (TIPS)
       
     </span>
   </a>
@@ -1202,107 +1046,54 @@
 
 
 
-  <h1>WSL2</h1>
+  <h1>Make&amp;CMake&amp;Git介绍</h1>
 
-<h2 id="windows-subsystem-for-linux-wsl-2-指南">Windows Subsystem for Linux (WSL 2) 指南<a class="headerlink" href="#windows-subsystem-for-linux-wsl-2-指南" title="Permanent link">¶</a></h2>
-<p>WSL 2 允许你在 Windows 上运行原生的 Linux 二进制可执行文件。对于不想折腾双系统或虚拟机的同学，这是 最推荐 的本地开发环境。</p>
-<h3 id="1-一键安装">1. 一键安装<a class="headerlink" href="#1-一键安装" title="Permanent link">¶</a></h3>
-<p>在 Windows 10 (版本 2004 及更高，内部版本 19041 及更高) 或 Windows 11 中，以<strong>管理员身份</strong>打开 PowerShell 或 Windows Terminal，输入：</p>
-<div class="highlight"><pre><span></span><code><span class="c"># 如果之前未安装过 WSL，此命令将启用所需功能并安装 Ubuntu</span>
-<span class="n">wsl</span> <span class="p">-</span><span class="n">-install</span>
-
-<span class="c"># 如果想列出可用的分发版</span>
-<span class="n">wsl</span> <span class="p">-</span><span class="n">-list</span> <span class="p">-</span><span class="n">-online</span>
-
-<span class="c"># 如果想安装特定的分发版（如 Ubuntu 24.04）</span>
-<span class="n">wsl</span> <span class="p">-</span><span class="n">-install</span> <span class="n">-d</span> <span class="n">Ubuntu</span><span class="p">-</span><span class="n">24</span><span class="p">.</span><span class="n">04</span>
-</code></pre></div>
-<p>默认会安装 <strong>Ubuntu</strong>。安装完成后，你需要重启电脑并设置 Linux 用户名和密码（<strong>注意：输入密码时屏幕不会显示字符</strong>）。</p>
-<p>更多详情请参考微软官方文档：<a href="https://learn.microsoft.com/zh-cn/windows/wsl/install">安装 WSL</a></p>
-<h3 id="2-注意事项与常用命令">2. 注意事项与常用命令<a class="headerlink" href="#2-注意事项与常用命令" title="Permanent link">¶</a></h3>
+<h2 id="实验简介">实验简介<a class="headerlink" href="#实验简介" title="Permanent link">¶</a></h2>
+<p>在之前的学习中，我们通过手动调用 <code>gcc</code> 编译器完成了简单的单文件程序编译。然而，随着项目规模的增长，源码文件会增加到几十甚至上千个，手动编译不仅低效，且难以管理文件间的依赖关系。</p>
+<p>本次实验旨在带大家脱离“人肉编译”时代，掌握 C/C++ 开发中的<strong>工业级构建工具</strong>。我们将学习如何使用 <strong>Make</strong> 自动化编译流程，利用 <strong>CMake</strong> 应对跨平台和复杂项目的配置，并使用 <strong>Git</strong> 记录代码的每一次“进化”，为后续的大型实验（如模拟器或内核开发）打下坚实的基础。</p>
+<h2 id="实验目的">实验目的<a class="headerlink" href="#实验目的" title="Permanent link">¶</a></h2>
+<ol>
+<li><strong>掌握 Makefile 的基本语法</strong>：理解目标（Target）、依赖（Dependency）和命令（Command）的概念，学会使用自动化变量提高效率。</li>
+<li><strong>理解 CMake 的构建逻辑</strong>：学会编写 <code>CMakeLists.txt</code>，掌握外部构建（Out-of-source Build）的标准流程。</li>
+<li><strong>熟练使用 Git 进行版本管理</strong>：掌握工作区、暂存区、本地仓库的概念，熟悉 <code>add</code>, <code>commit</code>, <code>log</code>, <code>checkout</code> 等常用操作。</li>
+<li><strong>建立良好的开发习惯</strong>：学会编写 <code>.gitignore</code> 过滤中间文件，保持代码仓库的整洁。</li>
+</ol>
+<h2 id="实验时间安排">实验时间安排<a class="headerlink" href="#实验时间安排" title="Permanent link">¶</a></h2>
+<blockquote>
+<p><strong>注</strong>：此处为实验发布时的安排计划，请以课程主页和课程群内最新公告为准。</p>
+</blockquote>
 <ul>
-<li><strong>版本检查</strong>：在 PowerShell 中运行 <code>wsl -l -v</code> 确保版本显示为 <code>2</code>。若是 <code>1</code>，请使用 <code>wsl --set-version &lt;distro&gt; 2</code> 升级。</li>
-<li><strong>文件互访</strong>：</li>
-<li>在 Windows 访问 Linux 文件：在资源管理器地址栏输入 <code>\\wsl$</code>。</li>
-<li>在 Linux 访问 Windows 文件：路径通常在 <code>/mnt/c/Users/...</code>。</li>
-<li><strong>性能优化</strong>：WSL 2 使用真正的 Linux 内核。建议将代码放在 Linux 文件系统（如 <code>~/projects</code>）中，<strong>不要</strong>在 <code>/mnt/c/</code> 下进行重型编译任务（如内核编译），这会导致速度极慢。</li>
-<li><strong>关机</strong>：如果 WSL 占用内存过多，可以手动强制关闭：<code>wsl --shutdown</code>。</li>
-</ul>
-<h3 id="3-配合-vs-code-推荐方案">3. 配合 VS Code (推荐方案)<a class="headerlink" href="#3-配合-vs-code-推荐方案" title="Permanent link">¶</a></h3>
-<p>在 Windows 侧安装 VS Code，并搜索安装插件：<strong>WSL</strong>。
-之后在 WSL 终端输入 <code>code .</code>，即可开启丝滑的开发体验。</p>
-<p>{{&lt; callout type="info" &gt;}}
-如果你发现 <code>wsl --install</code> 报错，请检查 BIOS 中是否开启了 <strong>虚拟化技术 (Virtualization)</strong>。
-{{&lt; /callout &gt;}}</p>
-<hr>
-<h2 id="vlab-云实验平台使用指南">VLab 云实验平台使用指南<a class="headerlink" href="#vlab-云实验平台使用指南" title="Permanent link">¶</a></h2>
-<p>科大 <a href="https://vlab.ustc.edu.cn/vm/">VLab (vlab.ustc.edu.cn)</a> 为每位同学提供了强大的云端虚拟机，环境统一且不占用本地资源。</p>
-<h3 id="1-创建环境">1. 创建环境<a class="headerlink" href="#1-创建环境" title="Permanent link">¶</a></h3>
-<ol>
-<li>登录平台后，选择 <strong>Ubuntu 24.04</strong> 或 <strong>Ubuntu 22.04</strong> 镜像创建虚拟机，并输入一个虚拟机名称。</li>
-<li>创建好虚拟机后，稍等 3 分钟，然后将虚拟机开机。
-<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../image-vlab.png" data-desc-position="bottom"><img alt="VLab 创建虚拟机" src="../image-vlab.png"></a></li>
-<li>下面列出了多种使用方式，可根据个人喜好选择。</li>
-</ol>
-<h3 id="2-远程连接与访问规则">2. 远程连接与访问规则<a class="headerlink" href="#2-远程连接与访问规则" title="Permanent link">¶</a></h3>
-<p>由于安全策略，VLab 的 IP 通常只能在校内访问。
-- <strong>校外访问</strong>：请务必先连接 <a href="https://vpn.ustc.edu.cn">校内 VPN (SSLVPN)</a>。
-- <strong>网页终端</strong>：虽然网页自带 网页桌面，但由于延迟和粘贴不便，<strong>强烈建议使用 SSH 连接</strong>。</p>
-<p>{{&lt; callout type="warning" &gt;}}
- VLab 磁盘空间有限，默认只有 20GB-40GB，请不要在里面存储大量的无关视频或大数据集。
-{{&lt; /callout &gt;}}</p>
-<p>完整的使用指南请参考官方文档：<a href="https://vlab.ustc.edu.cn/docs/">VLab 使用手册</a></p>
-<hr>
-<h2 id="ssh连接你的开发世界">SSH：连接你的开发世界<a class="headerlink" href="#ssh连接你的开发世界" title="Permanent link">¶</a></h2>
-<p>SSH (Secure Shell) 是系统程序员的“传送门”。学会它，你就可以在本地舒适的编辑器里操控任何一台远程服务器。</p>
-<h3 id="1-基础连接">1. 基础连接<a class="headerlink" href="#1-基础连接" title="Permanent link">¶</a></h3>
-<p>打开你电脑的终端（CMD/PowerShell/Terminal），输入：
-</p><div class="highlight"><pre><span></span><code><span class="c1"># 格式：ssh 用户名@IP地址</span>
-ssh<span class="w"> </span>username@202.38.xxx.xxx
-</code></pre></div><p></p>
-<h3 id="2-vs-code-remote-ssh">2. VS Code Remote SSH<a class="headerlink" href="#2-vs-code-remote-ssh" title="Permanent link">¶</a></h3>
-<p>这是目前最高效的开发流程：</p>
-<ol>
-<li>安装插件 <strong>Remote - SSH</strong>。</li>
-<li>点击左下角蓝色图标 <code>&gt;&lt;</code> -&gt; <code>Connect to Host...</code>。</li>
-<li>输入 <code>username@ip</code>。</li>
-<li><strong>效果</strong>：你可以像编辑本地文件一样使用 VS Code 所有的功能（语法高亮、自动补全、插件），但代码实际上运行在远程服务器（VLab/WSL）上。</li>
-</ol>
-<h3 id="3-告别密码免密登录">3. 告别密码：免密登录<a class="headerlink" href="#3-告别密码免密登录" title="Permanent link">¶</a></h3>
-<p>每次输入密码很痛苦？</p>
-<ol>
-<li><strong>本地生成密钥对</strong>：<code>ssh-keygen -t ed25519</code> (一路回车)。</li>
-<li><strong>拷贝给服务器</strong>：<code>ssh-copy-id username@ip</code>。
-之后，连接时将不再询问密码。</li>
-</ol>
-<h3 id="4-极致配置sshconfig">4. 极致配置：<code>.ssh/config</code><a class="headerlink" href="#4-极致配置sshconfig" title="Permanent link">¶</a></h3>
-<p>你不需要记住复杂的 IP！编辑你的 <code>~/.ssh/config</code> (Windows 在 <code>C:\Users\YourName\.ssh\config</code>)：</p>
-<div class="highlight"><pre><span></span><code>Host my-lab
-    HostName 202.38.xxx.xxx
-    User root
-    Port 22
-    IdentityFile ~/.ssh/id_ed25519 # 可选
-</code></pre></div>
-<p><strong>用法</strong>：以后只需输入 <code>ssh my-lab</code> 即可连接。</p>
-<h3 id="5-常见问题排查-troubleshooting">5. 常见问题排查 (Troubleshooting)<a class="headerlink" href="#5-常见问题排查-troubleshooting" title="Permanent link">¶</a></h3>
-<ul>
-<li><strong>SSH 免密失败</strong>：确认本地 <code>.ssh/authorized_keys</code> 权限为 600（虽然 WSL/VLab 对此宽松，但 SSH 协仪本身很敏感）。</li>
-<li><strong>Connection Timed Out</strong>：通常是网络问题。如果是 VLab，请检查 <strong>VPN</strong> 是否连接。</li>
-<li><strong>VS Code "Setting up SSH Host" 卡死</strong>：通常是远程端在初始化下载 VS Code Server。请耐心等待，或者检查网络连接。</li>
+<li><strong>3.13 晚实验课</strong>：3月13日（周五）晚 19:30~22:30。</li>
+<li><strong>地点</strong>：电三楼 406/408。</li>
 </ul>
 <hr>
-<h2 id="服务器永不掉线tmux-简要教程">服务器永不掉线：Tmux 简要教程<a class="headerlink" href="#服务器永不掉线tmux-简要教程" title="Permanent link">¶</a></h2>
-<p>当我们断开 SSH 时，运行在服务器上的程序往往会随之关闭。<strong>Tmux (Terminal Multiplexer)</strong> 可以让程序在一个虚拟窗口中持续运行，直到你手动关闭。</p>
-<h3 id="1-核心操作">1. 核心操作<a class="headerlink" href="#1-核心操作" title="Permanent link">¶</a></h3>
+<h2 id="实验内容">实验内容<a class="headerlink" href="#实验内容" title="Permanent link">¶</a></h2>
+<h3 id="章节预览">章节预览<a class="headerlink" href="#章节预览" title="Permanent link">¶</a></h3>
+<h4 id="1-make-简介与-makefile-编写">1. Make 简介与 Makefile 编写<a class="headerlink" href="#1-make-简介与-makefile-编写" title="Permanent link">¶</a></h4>
 <ul>
-<li><strong>安装</strong>：<code>sudo apt install tmux</code> (Ubuntu 默认大部分已带)。</li>
-<li><strong>新建窗口</strong>：<code>tmux</code>。</li>
-<li><strong>离开窗口 (Detach)</strong>：按 <code>Ctrl + B</code> 后，再按 <code>D</code>。此时你的代码在后台运行！</li>
-<li><strong>重新进入 (Attach)</strong>：<code>tmux attach</code>。</li>
+<li><strong>核心痛点</strong>：解决“修改一个文件就要重编整个项目”的低效问题。</li>
+<li><strong>重点概念</strong>：隐式规则、伪目标（<code>.PHONY</code>）、变量定义、自动化变量（<code>$@</code>, <code>$&lt;</code>, <code>$^</code>）。</li>
+<li><strong>任务</strong>：为提供的多文件 C 项目手动编写一个 Makefile，实现增量编译与清理功能。</li>
 </ul>
-<p>{{&lt; callout type="tip" &gt;}}
-在实验过程中（尤其是耗时较长的程序运行），<strong>极其强烈建议</strong>开启一个 <code>tmux</code> 窗口。这能有效防止因无线网络波动产生的 SSH 断连导致实验数据丢失。
-{{&lt; /callout &gt;}}</p>
+<h4 id="2-现代构建系统cmake">2. 现代构建系统：CMake<a class="headerlink" href="#2-现代构建系统cmake" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong>核心痛点</strong>：Makefile 在大型项目中过于冗长，且难以跨平台。</li>
+<li><strong>重点概念</strong>：<code>CMakeLists.txt</code>、<code>add_executable</code>、库的链接、构建目录的分离。</li>
+<li><strong>任务</strong>：将第一部分的项目改用 CMake 管理，并尝试添加外部库依赖。</li>
+</ul>
+<h4 id="3-版本控制工具git">3. 版本控制工具：Git<a class="headerlink" href="#3-版本控制工具git" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong>核心痛点</strong>：代码改崩了找不回来？多人协作代码冲突？</li>
+<li><strong>重点概念</strong>：Git 的三个区域（Working Tree, Index, Repository）。</li>
+<li><strong>任务</strong>：初始化仓库，完成多次提交，学会通过 <code>git log</code> 查看历史，并尝试使用分支（Branch）进行特性开发。</li>
+</ul>
+<hr>
+<h3 id="助教提示-tips">助教提示 (TIPS)<a class="headerlink" href="#助教提示-tips" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>关于环境</strong>：建议在 Linux 环境（Ubuntu/WSL2）下完成实验，避免 Windows 换行符（CRLF）带来的脚本报错。</li>
+<li><strong>关于 Git</strong>：请务必配置好 <code>user.name</code> 和 <code>user.email</code>，这是作为系统程序员的基本素养。</li>
+<li><strong>禁止事项</strong>：严禁将编译生成的二进制文件（如 <code>.o</code>, <code>a.out</code>）提交到 Git 仓库，请合理配置 <code>.gitignore</code>。</li>
+</ul>
 
 
 
@@ -1323,7 +1114,7 @@ ssh<span class="w"> </span>username@202.38.xxx.xxx
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年3月9日 11:16:16 UTC">2026年3月9日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年3月11日 05:03:53 UTC">2026年3月11日</span>
   </span>
 
     
@@ -1334,12 +1125,11 @@ ssh<span class="w"> </span>username@202.38.xxx.xxx
   <span class="md-source-file__fact">
     <span class="md-icon" title="贡献者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"></path></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"></path></svg>
       
     </span>
     <nav>
       
-        <a href="mailto:1002682355@qq.com">Terialion</a>
     </nav>
   </span>
 
@@ -1368,7 +1158,7 @@ ssh<span class="w"> </span>username@202.38.xxx.xxx
       <nav class="md-footer__inner md-grid" aria-label="页脚">
         
           
-          <a href="../part2/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 初探Linux">
+          <a href="../lab1/requirement/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 实验要求与检查">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
@@ -1378,20 +1168,20 @@ ssh<span class="w"> </span>username@202.38.xxx.xxx
                 上一页
               </span>
               <div class="md-ellipsis">
-                初探Linux
+                实验要求与检查
               </div>
             </div>
           </a>
         
         
           
-          <a href="../requirement/" class="md-footer__link md-footer__link--next" aria-label="下一页: 实验要求与检查">
+          <a href="part1/" class="md-footer__link md-footer__link--next" aria-label="下一页: Make工具">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 下一页
               </span>
               <div class="md-ellipsis">
-                实验要求与检查
+                Make工具
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -1428,20 +1218,20 @@ ssh<span class="w"> </span>username@202.38.xxx.xxx
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.expand", "navigation.footer", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.expand", "navigation.footer", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
-        <script src="../../javascripts/mathjax.js"></script>
+        <script src="../javascripts/mathjax.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
-        <script src="../../javascripts/katex.js"></script>
+        <script src="../javascripts/katex.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
       
