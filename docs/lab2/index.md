@@ -31,20 +31,98 @@ weight: 20
 
 * **核心痛点**：解决“修改一个文件就要重编整个项目”的低效问题。
 * **重点概念**：隐式规则、伪目标（`.PHONY`）、变量定义、自动化变量（`$@`, `$<`, `$^`）。
-* **任务**：为提供的多文件 C 项目手动编写一个 Makefile，实现增量编译与清理功能。
 
 #### 2. 现代构建系统：CMake
 
 * **核心痛点**：Makefile 在大型项目中过于冗长，且难以跨平台。
 * **重点概念**：`CMakeLists.txt`、`add_executable`、库的链接、构建目录的分离。
-* **任务**：将第一部分的项目改用 CMake 管理，并尝试添加外部库依赖。
 
 #### 3. 版本控制工具：Git
 
 * **核心痛点**：代码改崩了找不回来？多人协作代码冲突？
 * **重点概念**：Git 的三个区域（Working Tree, Index, Repository）。
-* **任务**：初始化仓库，完成多次提交，学会通过 `git log` 查看历史，并尝试使用分支（Branch）进行特性开发。
 
+### 学习路径
+
+- [章节一：Make简介与Makefile编写](./part1)
+- [章节二：现代构建系统：CMake](./part2)
+- [章节三：版本控制工具：Git](./part3)
+- [实验二：Git 与 CMake 基础实践操作指南](./experiment-guide)
+
+## 实验要求与检查
+
+!!! warning "草案说明"
+
+   当前页面中“实验要求与检查”为草案，具体时间与提交口径以课程公告和教学平台为准。
+
+### 1. 实验任务清单
+
+本次实验要求完成以下四个步骤：
+
+1. 账号准备：前往 [Gitee](https://gitee.com/) 注册账号。
+2. 代码构建（CMake）：按统一模板创建 `myproject`，并使用 `CMakeLists.txt` 成功构建可执行程序 `myapp`。
+3. 版本控制（Git）：
+   - 在本地初始化仓库（`git init`）。
+   - 完成多次代码修改并进行暂存与提交（`git add`、`git commit`）。
+   - 在 Gitee 上创建同名仓库，并将本地代码推送到远端（`git remote add`、`git push`）。
+4. 作业提交：按照要求整理截图并提交到课程平台。
+
+### 2. 标准目录结构
+
+为便于管理和评阅，本实验统一使用以下目录结构：
+
+```text
+myproject/
+├── main.c
+├── utils.c
+├── utils.h
+└── CMakeLists.txt
+```
+
+建议在项目根目录额外创建 `build/` 用于外部构建。
+
+### 3. 统一 CMake 配置与构建流程
+
+`CMakeLists.txt` 示例：
+
+```cmake
+cmake_minimum_required(VERSION 3.10)
+project(MyApp)
+
+set(SOURCES main.c utils.c)
+
+add_executable(myapp ${SOURCES})
+```
+
+构建命令（推荐外部构建）：
+
+```bash
+mkdir build
+cd build
+cmake ..
+make
+```
+
+你也可以使用：
+
+```bash
+cmake --build .
+```
+
+来代替 `make`。
+
+### 4. 截图作业说明（按课程平台要求提交）
+
+请提交一份 PDF，内容需包含以下关键截图：
+
+1. CMake 编译截图：终端执行 `cmake ..` 与 `make`（或 `cmake --build .`）的成功过程。
+2. Git 历史截图：`git log --oneline --graph --all` 输出。
+3. Gitee 仓库截图：仓库主页，清晰显示项目名称与提交记录。
+4. 目录结构截图：清晰展示 `myproject` 下 `main.c`、`utils.c`、`utils.h` 与 `CMakeLists.txt`。
+
+!!! Note "建议补充"
+
+    若课程要求过程可追溯，建议补充一张包含 `git status`、`git add`、`git commit`、`git push` 的连续终端截图。
 
 ---
 

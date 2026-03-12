@@ -119,4 +119,5 @@ nav:
     - Make工具: lab2/part1.md
     - CMake工具: lab2/part2.md
     - Git工具: lab2/part3.md
+    - Git 与 CMake 基础实践操作指南: lab2/experiment-guide.md
     #- 实验要求与检查: lab2/requirement.md

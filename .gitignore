@@ -1,49 +1,57 @@
-# Python related files
+/site/
+/build/
+/node_modules/
+/dist/
+
+# Python
 __pycache__/
 *.py[cod]
 *.pyo
-
-# Virtual environment
+*.pyd
+.Python
+env/
 venv/
-.env/
-*.env
+env.bak/
 
-# MkDocs build directory
-site/
+# C/C++ / CMake / Make
+*.o
+*.obj
+*.so
+*.a
+*.dll
+*.exe
+*.out
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+*.d
 
-# Logs
-*.log
-
-# OS generated files
+# Editor / OS
+.vscode/
+.idea/
+*.swp
+*~
 .DS_Store
 Thumbs.db
 
-# IDE specific files
-.idea/
-.vscode/
-*.sublime-project
-*.sublime-workspace
+# Logs and local env
+*.log
+.env
+.env.local
 
-# Node.js dependencies
-node_modules/
+# Node / JS
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
 
-# Compiled files
-*.out
+# Others
 *.class
-*.exe
-*.o
-*.so
+*.jar
+*.war
+*.iml
 
-# Temporary files
-*.tmp
-*.swp
-*.bak
-*.old
+# Note: .gitignore 不会自动移除已被跟踪的文件。若要从历史中移除已提交的生成文件，运行：
+# git rm -r --cached site && git commit -m "remove generated site from repo"
 
-# Other
-*.lock
-*.gz
-*.zip
-*.tar
-*.rar
-*.7z
