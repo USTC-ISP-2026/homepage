@@ -192,27 +192,27 @@ Hello, World!
 
 1. Gitee 仓库截图
 
-包含：
+    包含：
 
-- 仓库名称
-- 文件列表
+   - 仓库名称
+   - 文件列表
 
 2. Git 命令执行截图
 
-需包含以下命令执行记录：
+    需包含以下命令执行记录：
 
-- `git init`
-- `git add`
-- `git commit`
-- `git push`
+    - `git init`
+    - `git add`
+    - `git commit`
+    - `git push`
 
 3. CMake 编译截图
 
-包含：
+    包含：
 
-- `cmake ..`
-- `make`
-- `./myapp`
+    - `cmake ..`
+    - `make`
+    - `./myapp`
 
 ## 四、说明
 
