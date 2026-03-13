@@ -1,3 +1,8 @@
+---
+title: 实验二：基础工具——make/cmake与git的使用
+weight: 20
+---
+
 ## 实验简介
 
 !!! warning "Deadline"

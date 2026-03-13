@@ -1,3 +1,8 @@
+---
+title: 实验二介绍
+weight: 20
+---
+
 ## 一、实验目标
 
 !!! warning "Deadline"
