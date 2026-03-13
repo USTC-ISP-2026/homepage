@@ -34,7 +34,7 @@ weight: 20
 
 - 仓库名称：`myproject`
 - 公开仓库
-- 初始化 `README`
+- 不要初始化 `README`（推荐，避免首次 `git push` 历史冲突）
 
 提交截图。
 
@@ -146,9 +146,18 @@ git remote add origin https://gitee.com/用户名/myproject.git
 git push -u origin master
 ```
 
-或：
+如果你在云端已勾选“初始化 README”，首次推送可能失败（`non-fast-forward`）。
+请先执行：
 
 ```bash
+git pull origin main --allow-unrelated-histories
+```
+
+若出现冲突，解决后执行：
+
+```bash
+git add .
+git commit -m "merge remote and local"
 git push -u origin main
 ```
 
@@ -230,4 +239,5 @@ git config --global user.email "你的邮箱"
 ```
 
 - 若远程默认分支为 `main`，请使用 `git push -u origin main`。
+- 若你已在远程初始化 `README`，建议改为 `git clone` 后再拷贝实验文件并提交，可减少冲突处理步骤。
 
