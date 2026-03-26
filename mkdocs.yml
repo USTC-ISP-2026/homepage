@@ -121,3 +121,8 @@ nav:
     - Git工具: lab2/part3.md
     - Git 与 CMake 基础实践操作指南: lab2/experiment-guide.md
     #- 实验要求与检查: lab2/requirement.md
+  - Lab3:
+    - 模块化程序设计: lab3/index.md
+    - 单词整理器: lab3/problem1_word_cleaner.md
+    - 成绩行筛选器: lab3/problem2_score_filter.md 
+    - 动态通讯录: lab3/problem3_phonebook.md
