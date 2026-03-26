@@ -51,6 +51,7 @@ package-lock.json
 *.jar
 *.war
 *.iml
+.github/
 
 # Note: .gitignore 不会自动移除已被跟踪的文件。若要从历史中移除已提交的生成文件，运行：
 # git rm -r --cached site && git commit -m "remove generated site from repo"
