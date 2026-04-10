@@ -126,3 +126,6 @@ nav:
     - 单词整理器: lab3/problem1_word_cleaner.md
     - 成绩行筛选器: lab3/problem2_score_filter.md 
     - 动态通讯录: lab3/problem3_phonebook.md
+  - Lab4:
+    - 指针的高级使用: lab4/index.md
+    - LRU 缓存: lab4/LRU_Cache.md
