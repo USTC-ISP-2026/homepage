@@ -6,10 +6,8 @@
       
       
       
-        <link rel="prev" href="../part1/">
+        <link rel="prev" href="../">
       
-      
-        <link rel="next" href="../part3/">
       
       
         
@@ -20,7 +18,7 @@
     
     
       
-        <title>章节二：现代构建系统：CMake - USTC 系统程序设计基础</title>
+        <title>LRU 缓存 - USTC 系统程序设计基础</title>
       
     
     
@@ -89,7 +87,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#21-什么是-cmake" class="md-skip">
+        <a href="#lru-缓存-lru-cache" class="md-skip">
           跳转至
         </a>
       
@@ -125,7 +123,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              章节二：现代构建系统：CMake
+              LRU 缓存
             
           </span>
         </div>
@@ -255,13 +253,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../lab2/" class="md-tabs__link">
           
   
   
@@ -297,11 +293,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../lab4/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
           
   
   
@@ -554,29 +552,26 @@
       
   
   
-    
   
   
-  
     
     
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked="">
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3">
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
   
   
@@ -594,7 +589,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -612,7 +607,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../" class="md-nav__link">
+      <a href="../../lab2/" class="md-nav__link">
         
   
   
@@ -640,7 +635,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../part1/" class="md-nav__link">
+      <a href="../../lab2/part1/" class="md-nav__link">
         
   
   
@@ -665,35 +660,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    CMake工具
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../lab2/part2/" class="md-nav__link">
         
   
   
@@ -709,124 +679,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-      
-        <li class="md-nav__item">
-  <a href="#21-什么是-cmake" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.1 什么是 CMake？
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#22-基础-cmakeliststxt" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.2 基础 CMakeLists.txt
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2.2 基础 CMakeLists.txt">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#221-四行核心指令" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.2.1 四行核心指令
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#23-标准构建流程外部构建-out-of-source-build" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.3 标准构建流程：外部构建 (Out-of-source Build)
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2.3 标准构建流程：外部构建 (Out-of-source Build)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#构建命令" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        构建命令：
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#24-进阶如何处理头文件" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.4 进阶：如何处理头文件？
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#25-为什么我们要用-cmake对比总结" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.5 为什么我们要用 CMake？（对比总结）
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#26-qa-与避坑指南" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.6 Q&amp;A 与避坑指南
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -839,7 +691,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../part3/" class="md-nav__link">
+      <a href="../../lab2/part3/" class="md-nav__link">
         
   
   
@@ -867,7 +719,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../experiment-guide/" class="md-nav__link">
+      <a href="../../lab2/experiment-guide/" class="md-nav__link">
         
   
   
@@ -1070,26 +922,29 @@
       
   
   
+    
   
   
+  
     
     
     
     
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
       
         
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked="">
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5">
-        
-          
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
             
   
   
@@ -1107,7 +962,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1125,7 +980,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab4/" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         
   
   
@@ -1150,10 +1005,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../lab4/LRU_Cache/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LRU 缓存
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1169,6 +1051,270 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#题目背景" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        题目背景
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#题目描述" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        题目描述
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="题目描述">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#最简样例-minimal-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        最简样例 (Minimal Example)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#样例说明-sample-walkthrough" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        样例说明 (Sample Walkthrough)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#输入格式" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        输入格式
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#输出格式" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        输出格式
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#数据范围" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数据范围
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#时间限制" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        时间限制
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#内存限制" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        内存限制
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#样例-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        样例 1
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="样例 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#输入" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        输入
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#输出" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        输出
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#样例-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        样例 2
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="样例 2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#输入_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        输入
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#输出_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        输出
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#样例-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        样例 3
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="样例 3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#输入_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        输入
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#输出_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        输出
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#提示" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        提示
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#实现要求" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        实现要求
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1198,6 +1344,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1206,10 +1354,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#21-什么是-cmake" class="md-nav__link">
+  <a href="#题目背景" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.1 什么是 CMake？
+        题目背景
       
     </span>
   </a>
@@ -1217,22 +1365,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#22-基础-cmakeliststxt" class="md-nav__link">
+  <a href="#题目描述" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.2 基础 CMakeLists.txt
+        题目描述
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2.2 基础 CMakeLists.txt">
+    <nav class="md-nav" aria-label="题目描述">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#221-四行核心指令" class="md-nav__link">
+  <a href="#最简样例-minimal-example" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.2.1 四行核心指令
+        最简样例 (Minimal Example)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#样例说明-sample-walkthrough" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        样例说明 (Sample Walkthrough)
       
     </span>
   </a>
@@ -1245,22 +1404,88 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#23-标准构建流程外部构建-out-of-source-build" class="md-nav__link">
+  <a href="#输入格式" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.3 标准构建流程：外部构建 (Out-of-source Build)
+        输入格式
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2.3 标准构建流程：外部构建 (Out-of-source Build)">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#输出格式" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        输出格式
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#数据范围" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数据范围
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#时间限制" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        时间限制
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#内存限制" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        内存限制
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#样例-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        样例 1
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="样例 1">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#构建命令" class="md-nav__link">
+  <a href="#输入" class="md-nav__link">
     <span class="md-ellipsis">
       
-        构建命令：
+        输入
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#输出" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        输出
       
     </span>
   </a>
@@ -1273,10 +1498,88 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#24-进阶如何处理头文件" class="md-nav__link">
+  <a href="#样例-2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.4 进阶：如何处理头文件？
+        样例 2
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="样例 2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#输入_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        输入
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#输出_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        输出
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#样例-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        样例 3
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="样例 3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#输入_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        输入
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#输出_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        输出
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#提示" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        提示
       
     </span>
   </a>
@@ -1284,21 +1587,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#25-为什么我们要用-cmake对比总结" class="md-nav__link">
+  <a href="#实现要求" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.5 为什么我们要用 CMake？（对比总结）
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#26-qa-与避坑指南" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.6 Q&amp;A 与避坑指南
+        实现要求
       
     </span>
   </a>
@@ -1322,116 +1614,172 @@
 
 
 
-  <h1>CMake工具</h1>
-
-<p>在上一章节中，我们手动编写了 Makefile。虽然对于几个文件的项目来说还算轻松，但如果项目引入了复杂的文件夹结构、外部库，或者需要从 Linux 迁移到 Windows，手写 Makefile 就会变成一场噩梦。</p>
-<p>这一节，我们将学习现代 C/C++ 开发的标准工具——<strong>CMake</strong>。</p>
-<hr>
-<h2 id="21-什么是-cmake">2.1 什么是 CMake？<a class="headerlink" href="#21-什么是-cmake" title="Permanent link">¶</a></h2>
-<p><strong>CMake (Cross-Platform Make)</strong> 并不是直接替代 <code>make</code> 的编译器，而是一个<strong>构建系统生成器 (Generator)</strong>。</p>
-<ul>
-<li><strong>Make</strong>：像是一个<strong>具体的食谱</strong>，规定了哪一分钟下肉，哪一分钟撒盐。</li>
-<li><strong>CMake</strong>：更像是一个<strong>厨政主管</strong>。你只需要告诉它：“我要做一个宫保鸡丁”，它会根据你现在的厨房环境（是 Linux 的 <code>gcc</code> 厨房，还是 Windows 的 <code>Visual Studio</code> 厨房），自动为你写好那份详细的“食谱”（Makefile 或项目文件）。</li>
-</ul>
-<hr>
-<h2 id="22-基础-cmakeliststxt">2.2 基础 CMakeLists.txt<a class="headerlink" href="#22-基础-cmakeliststxt" title="Permanent link">¶</a></h2>
-<p>CMake 的所有指令都写在一个名为 <code>CMakeLists.txt</code>（注意大小写和拼写）的文件中。</p>
-<h3 id="221-四行核心指令">2.2.1 四行核心指令<a class="headerlink" href="#221-四行核心指令" title="Permanent link">¶</a></h3>
-<p>一个最基础的 <code>CMakeLists.txt</code> 如下：</p>
-<div class="highlight"><pre><span></span><code><span class="c"># 1. 声明要求的最低版本（保证语法兼容性）</span>
-<span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span><span class="w"> </span><span class="s">3.10</span><span class="p">)</span>
-
-<span class="c"># 2. 定义项目名称和版本</span>
-<span class="nb">project</span><span class="p">(</span><span class="s">ISP_Lab2</span><span class="w"> </span><span class="s">VERSION</span><span class="w"> </span><span class="s">1.0</span><span class="p">)</span>
-
-<span class="c"># 3. 指定编译选项（这里开启了所有警告并使用 C11 标准）</span>
-<span class="nb">set</span><span class="p">(</span><span class="s">CMAKE_C_STANDARD</span><span class="w"> </span><span class="s">11</span><span class="p">)</span>
-<span class="nb">add_compile_options</span><span class="p">(</span><span class="s">-Wall</span><span class="w"> </span><span class="s">-Wextra</span><span class="w"> </span><span class="s">-g</span><span class="p">)</span>
-
-<span class="c"># 4. 告诉 CMake：我要生成一个叫 hello 的程序，源码是这些</span>
-<span class="nb">add_executable</span><span class="p">(</span><span class="s">hello</span><span class="w"> </span><span class="s">main.c</span><span class="w"> </span><span class="s">tool.c</span><span class="p">)</span>
-</code></pre></div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><strong>CMake 的优势</strong>：你发现了吗？我们<strong>没有</strong>在这里手动写 <code>.h</code> 的依赖关系。CMake 会在生成构建系统时，自动扫描源码中的 <code>#include</code>，并帮你处理好依赖树。</p>
+<h1 id="lru-缓存-lru-cache">LRU 缓存 (LRU Cache)<a class="headerlink" href="#lru-缓存-lru-cache" title="Permanent link">¶</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Deadline</p>
+<p>2026年4月24日23:59</p>
 </div>
-<hr>
-<h2 id="23-标准构建流程外部构建-out-of-source-build">2.3 标准构建流程：外部构建 (Out-of-source Build)<a class="headerlink" href="#23-标准构建流程外部构建-out-of-source-build" title="Permanent link">¶</a></h2>
-<p>在运行 CMake 时，会产生大量的中间缓存文件（如 <code>CMakeCache.txt</code>, <code>CMakeFiles/</code>）。如果直接在源码目录下运行，你的代码文件夹会瞬间变得极其混乱。</p>
-<p>因此，所有专业的开发者都会使用 <strong>“外部构建”</strong>：</p>
-<h3 id="构建命令">构建命令：<a class="headerlink" href="#构建命令" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>build<span class="w">    </span><span class="c1"># 1. 创建一个独立的构建目录</span>
-<span class="nb">cd</span><span class="w"> </span>build<span class="w">       </span><span class="c1"># 2. 钻进这个目录</span>
-cmake<span class="w"> </span>..<span class="w">       </span><span class="c1"># 3. “隔空取物”：让 CMake 读取上一级目录(..)的 CMakeLists.txt，并在当前目录生成 Makefile</span>
-make<span class="w">           </span><span class="c1"># 4. 此时 Makefile 已在 build 中生成，执行 make 即可编译</span>
+<h2 id="题目背景">题目背景<a class="headerlink" href="#题目背景" title="Permanent link">¶</a></h2>
+<p>LRU（Least Recently Used，最近最少使用）是一种常用的页面置换算法，选择最近最久未使用的页面予以淘汰。其核心价值在于利用“时间局部性”原理，在内存空间有限的情况下优先保留近期活跃的数据，从而有效减少对低速磁盘或网络的访问，大幅提升系统的响应速度。</p>
+<h2 id="题目描述">题目描述<a class="headerlink" href="#题目描述" title="Permanent link">¶</a></h2>
+<p>请你使用 <strong>带头节点的双向链表</strong>，实现一个满足 LRU 缓存约束的数据结构。</p>
+<p>要求双向链表内部节点按上一次被访问的时刻排序：</p>
+<ol>
+<li><strong>最近访问</strong>：缓存中上一次被访问时刻最近的节点，应作为头节点的后继（即链表的第一个有效节点）。</li>
+<li><strong>最久访问</strong>：缓存中上一次被访问时刻最远的节点，应处于双向链表的末尾。</li>
+</ol>
+<p>该数据结构需要实现以下功能：</p>
+<ul>
+<li><code>LRUCache(int capacity)</code>：以非负整数作为容量 <code>capacity</code> 初始化 LRU 缓存，返回一个指向双向链表头节点的指针。</li>
+<li><code>int get(int key)</code>：如果关键字 <code>key</code> 存在于缓存中，则返回关键字 <code>key</code> 对应的值 <code>value</code>，并将该节点移动到链表头部（头节点之后）；否则返回 -1。</li>
+<li><code>void put(int key, int value)</code>：</li>
+<li>如果关键字 <code>key</code> 已经存在，则变更其对应的值为新的 <code>value</code>，并将其移动到链表头部。</li>
+<li>如果关键字 <code>key</code> 不存在，则将这组 <code>key-value</code> 插入缓存（链表头部）。</li>
+<li>若此次插入导致缓存数量超过 <code>capacity</code>，则应删去缓存中最久未使用的 <code>key-value</code>（即链表末尾节点）。</li>
+</ul>
+<blockquote>
+<p>为了方便你理解 LRU 缓存的运行机制，这里提供一个 <strong>容量为 2</strong> 的最简样例及详细的操作步骤说明。</p>
+<h3 id="最简样例-minimal-example">最简样例 (Minimal Example)<a class="headerlink" href="#最简样例-minimal-example" title="Permanent link">¶</a></h3>
+<p><strong>输入</strong>
+</p><div class="highlight"><pre><span></span><code>2 5
+put 1 10
+put 2 20
+get 1
+put 3 30
+get 2
+</code></pre></div><p></p>
+<p><strong>输出</strong>
+</p><div class="highlight"><pre><span></span><code>10 -1 
+</code></pre></div><p></p>
+<h3 id="样例说明-sample-walkthrough">样例说明 (Sample Walkthrough)<a class="headerlink" href="#样例说明-sample-walkthrough" title="Permanent link">¶</a></h3>
+<p>假设双向链表的结构为：<code>Head &lt;-&gt; Node1 &lt;-&gt; Node2 &lt;-&gt; ... &lt;-&gt; Tail</code>
+（其中 <code>Head</code> 为不存储数据的头节点，<code>Node1</code> 为最近访问，末尾节点为最久访问）</p>
+<ol>
+<li><strong>初始化</strong>：</li>
+<li>容量 <code>capacity = 2</code>。</li>
+<li>
+<p>链表状态：<code>Head &lt;-&gt; Tail</code> (空)</p>
+</li>
+<li>
+<p><strong><code>put 1 10</code></strong>：</p>
+</li>
+<li>关键字 <code>1</code> 不存在，直接插入到头节点后。</li>
+<li>链表状态：<code>Head &lt;-&gt; [1:10] &lt;-&gt; Tail</code></li>
+<li>
+<p>缓存内容：<code>{1: 10}</code></p>
+</li>
+<li>
+<p><strong><code>put 2 20</code></strong>：</p>
+</li>
+<li>关键字 <code>2</code> 不存在，插入到头节点后。</li>
+<li>链表状态：<code>Head &lt;-&gt; [2:20] &lt;-&gt; [1:10] &lt;-&gt; Tail</code></li>
+<li>缓存内容：<code>{1: 10, 2: 20}</code></li>
+<li>
+<p><em>说明：[2:20] 是最新访问的，所以排在最前面。</em></p>
+</li>
+<li>
+<p><strong><code>get 1</code></strong>：</p>
+</li>
+<li>关键字 <code>1</code> 存在，返回其值 <code>10</code>。</li>
+<li><strong>关键动作</strong>：根据 LRU 规则，<code>1</code> 被访问了，需要移动到头节点后。</li>
+<li>链表状态：<code>Head &lt;-&gt; [1:10] &lt;-&gt; [2:20] &lt;-&gt; Tail</code></li>
+<li>
+<p><strong>输出：<code>10</code></strong></p>
+</li>
+<li>
+<p><strong><code>put 3 30</code></strong>：</p>
+</li>
+<li>关键字 <code>3</code> 不存在。此时缓存长度为 2，已达到容量上限。</li>
+<li><strong>淘汰操作</strong>：删去链表末尾最久未使用的节点（即 <code>[2:20]</code>）。</li>
+<li><strong>插入操作</strong>：将 <code>[3:30]</code> 插入到头节点后。</li>
+<li>链表状态：<code>Head &lt;-&gt; [3:30] &lt;-&gt; [1:10] &lt;-&gt; Tail</code></li>
+<li>
+<p>缓存内容：<code>{1: 10, 3: 30}</code></p>
+</li>
+<li>
+<p><strong><code>get 2</code></strong>：</p>
+</li>
+<li>关键字 <code>2</code> 已在步骤 5 中被淘汰。</li>
+<li><strong>输出：<code>-1</code></strong></li>
+</ol>
+</blockquote>
+<h2 id="输入格式">输入格式<a class="headerlink" href="#输入格式" title="Permanent link">¶</a></h2>
+<p>输入共包含两部分：</p>
+<ol>
+<li>第一行输入两个非负整数：<code>capacity</code>（容量）和 <code>n</code>（操作总次数）。</li>
+<li>接下来的 <code>n</code> 行，每行代表一个操作，格式为 <code>put key value</code> 或 <code>get key</code>。</li>
+</ol>
+<h2 id="输出格式">输出格式<a class="headerlink" href="#输出格式" title="Permanent link">¶</a></h2>
+<p>输出一行，包含所有 <code>get</code> 操作的结果，以空格分隔。如果某个 <code>get</code> 操作未命中，输出 -1。</p>
+<h2 id="数据范围">数据范围<a class="headerlink" href="#数据范围" title="Permanent link">¶</a></h2>
+<ul>
+<li><code>capacity</code>、<code>key</code>、<code>value</code> 均为非负 <code>int</code> 型。</li>
+<li>操作次数 <code>n</code> 视具体测试样例而定。</li>
+</ul>
+<h2 id="时间限制">时间限制<a class="headerlink" href="#时间限制" title="Permanent link">¶</a></h2>
+<p>1 秒</p>
+<h2 id="内存限制">内存限制<a class="headerlink" href="#内存限制" title="Permanent link">¶</a></h2>
+<p>128 MB</p>
+<h2 id="样例-1">样例 1<a class="headerlink" href="#样例-1" title="Permanent link">¶</a></h2>
+<h3 id="输入">输入<a class="headerlink" href="#输入" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code>2 9
+put 1 1
+put 2 2
+get 1
+put 3 3
+get 2
+put 4 4
+get 1
+get 3
+get 4
 </code></pre></div>
-<p><strong>为什么执行 <code>cmake ..</code>？</strong>
-<code>..</code> 代表父目录。CMake 需要知道 <code>CMakeLists.txt</code> 在哪，同时也知道要把生成的“垃圾文件”留在当前的 <code>build/</code> 文件夹里。</p>
-<hr>
-<h2 id="24-进阶如何处理头文件">2.4 进阶：如何处理头文件？<a class="headerlink" href="#24-进阶如何处理头文件" title="Permanent link">¶</a></h2>
-<p>如果你的项目结构变得复杂，例如头文件放在 <code>include/</code> 目录下：</p>
-<div class="highlight"><pre><span></span><code>.
-├── CMakeLists.txt
-├── include/
-│   └── tool.h
-└── src/
-    ├── main.c
-    └── tool.c
+<h3 id="输出">输出<a class="headerlink" href="#输出" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code>1 -1 -1 3 4 
 </code></pre></div>
-<p>你需要告诉 CMake 去哪里找头文件，否则编译时会报 <code>fatal error: tool.h: No such file or directory</code>。</p>
-<div class="highlight"><pre><span></span><code><span class="c"># 添加头文件搜索路径</span>
-<span class="nb">target_include_directories</span><span class="p">(</span><span class="s">hello</span><span class="w"> </span><span class="s">PUBLIC</span><span class="w"> </span><span class="s">include</span><span class="p">)</span>
-
-<span class="c"># 指定源码路径</span>
-<span class="nb">add_executable</span><span class="p">(</span><span class="s">hello</span><span class="w"> </span><span class="s">src/main.c</span><span class="w"> </span><span class="s">src/tool.c</span><span class="p">)</span>
+<h2 id="样例-2">样例 2<a class="headerlink" href="#样例-2" title="Permanent link">¶</a></h2>
+<h3 id="输入_1">输入<a class="headerlink" href="#输入_1" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code>0 0
 </code></pre></div>
-<hr>
-<h2 id="25-为什么我们要用-cmake对比总结">2.5 为什么我们要用 CMake？（对比总结）<a class="headerlink" href="#25-为什么我们要用-cmake对比总结" title="Permanent link">¶</a></h2>
-<table>
-<thead>
-<tr>
-<th>特性</th>
-<th>Make / Makefile</th>
-<th>CMake</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>层级</strong></td>
-<td>底层，直接控制编译动作</td>
-<td>高层，抽象描述项目需求</td>
-</tr>
-<tr>
-<td><strong>头文件依赖</strong></td>
-<td><strong>必须手动维护</strong>，漏写会导致更新不及时</td>
-<td><strong>自动扫描</strong>，无需操心</td>
-</tr>
-<tr>
-<td><strong>跨平台</strong></td>
-<td>换个系统（如 Win）基本要重写</td>
-<td>同样的文件，生成对应的工程文件</td>
-</tr>
-<tr>
-<td><strong>复杂度</strong></td>
-<td>文件多了之后，维护极其困难</td>
-<td>支持嵌套，大型项目的工业标准</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<h2 id="26-qa-与避坑指南">2.6 Q&amp;A 与避坑指南<a class="headerlink" href="#26-qa-与避坑指南" title="Permanent link">¶</a></h2>
-<details class="question">
-<summary><strong>Q: <code>cmake ..</code> 报错 <code>CMakeLists.txt not found</code>？</strong></summary>
-<p>A: 检查你是否在 <code>build</code> 目录下，且 <code>..</code> 路径是否正确指向了包含 <code>CMakeLists.txt</code> 的那个文件夹。</p>
-</details>
-<details class="question">
-<summary><strong>Q: 我修改了代码，需要重新运行 <code>cmake ..</code> 吗？</strong></summary>
-<p>A: 通常不需要。直接在 <code>build</code> 目录下运行 <code>make</code> 即可。生成的 Makefile 非常聪明，它如果检测到 <code>CMakeLists.txt</code> 变了，会自己触发 CMake 更新。</p>
-</details>
-<details class="question">
-<summary><strong>Q: 为什么生成的 <code>build</code> 目录下有几百个文件？</strong></summary>
-<p>A: 别担心，这就是为什么我们要建 <code>build</code> 文件夹的原因。如果你想“彻底清理”编译产物，直接 <code>rm -rf build</code> 即可，完全不会伤及源码。</p>
-</details>
+<h3 id="输出_1">输出<a class="headerlink" href="#输出_1" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code>(无输出)
+</code></pre></div>
+<h2 id="样例-3">样例 3<a class="headerlink" href="#样例-3" title="Permanent link">¶</a></h2>
+<h3 id="输入_2">输入<a class="headerlink" href="#输入_2" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code>3 16
+put 1 1
+put 2 2
+get 3
+put 3 3
+get 2
+put 3 33
+get 1
+put 4 4
+get 2
+get 3
+put 5 5
+get 1
+get 2
+get 3
+get 4
+get 5
+</code></pre></div>
+<h3 id="输出_2">输出<a class="headerlink" href="#输出_2" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code>-1 2 1 -1 33 -1 -1 33 4 5
+</code></pre></div>
+<h2 id="提示">提示<a class="headerlink" href="#提示" title="Permanent link">¶</a></h2>
+<ul>
+<li><strong>思考题</strong>：如何设计函数 <code>get()</code> 和 <code>put()</code> 使其以 O(1) 的平均时间复杂度运行？</li>
+<li><em>提示：尝试结合哈希表（Hash Map）与双向链表。</em></li>
+<li><strong>链表操作</strong>：在 <code>put</code> 和 <code>get</code> 时，涉及到节点的“提前”操作，即从当前位置删除并插入到头节点之后。</li>
+</ul>
+<h2 id="实现要求">实现要求<a class="headerlink" href="#实现要求" title="Permanent link">¶</a></h2>
+<ul>
+<li><strong>核心结构</strong>：必须使用带头节点的双向链表实现。</li>
+<li><strong>指针操作</strong>：必须显式地进行指针管理，严禁仅使用数组下标模拟。</li>
+<li><strong>多文件开发</strong>：建议将项目拆分为 <code>main.c</code>（处理输入输出）、<code>lru.c</code>（核心逻辑）和 <code>lru.h</code>（结构定义与函数声明）。</li>
+<li><strong>构建工具</strong>：工程需支持通过 <code>Makefile</code> 或 <code>CMakeLists.txt</code> 进行构建。</li>
+<li><strong>注意</strong>：平台无法进行<code>CMake</code>编译，所以需要同学将所有文件放在同一目录下。</li>
+</ul>
 
 
 
@@ -1452,7 +1800,7 @@ make<span class="w">           </span><span class="c1"># 4. 此时 Makefile 已�
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年3月11日 06:05:04 UTC">2026年3月11日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年4月10日 12:36:27 UTC">2026年4月10日</span>
   </span>
 
     
@@ -1468,7 +1816,7 @@ make<span class="w">           </span><span class="c1"># 4. 此时 Makefile 已�
     </span>
     <nav>
       
-        <a href="mailto:1002682355@qq.com">Terialion</a>
+        <a href="mailto:wyh2022@mail.ustc.edu.cn">Terialion</a>
     </nav>
   </span>
 
@@ -1497,7 +1845,7 @@ make<span class="w">           </span><span class="c1"># 4. 此时 Makefile 已�
       <nav class="md-footer__inner md-grid" aria-label="页脚">
         
           
-          <a href="../part1/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Make工具">
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="上一页: 指针的高级使用">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
@@ -1507,27 +1855,11 @@ make<span class="w">           </span><span class="c1"># 4. 此时 Makefile 已�
                 上一页
               </span>
               <div class="md-ellipsis">
-                Make工具
+                指针的高级使用
               </div>
             </div>
           </a>
         
-        
-          
-          <a href="../part3/" class="md-footer__link md-footer__link--next" aria-label="下一页: Git工具">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                下一页
-              </span>
-              <div class="md-ellipsis">
-                Git工具
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
-            </div>
-          </a>
         
       </nav>
     

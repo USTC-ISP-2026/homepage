@@ -6,28 +6,28 @@
       
       
       
-        <link rel="prev" href="../part1/">
+        <link rel="prev" href="../lab3/problem3_phonebook/">
       
       
-        <link rel="next" href="../part3/">
+        <link rel="next" href="LRU_Cache/">
       
       
         
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
     
     
       
-        <title>章节二：现代构建系统：CMake - USTC 系统程序设计基础</title>
+        <title>指针的高级使用 - USTC 系统程序设计基础</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -46,21 +46,21 @@
       
     
     
-      <link rel="stylesheet" href="../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../stylesheets/extra.css">
     
-      <link rel="stylesheet" href="../../css/extra.css">
+      <link rel="stylesheet" href="../css/extra.css">
     
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css">
     
-      <link rel="stylesheet" href="../../styles.css">
+      <link rel="stylesheet" href="../styles.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
-  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+  <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
             html.glightbox-open { overflow: initial; height: 100%; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
@@ -89,7 +89,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#21-什么是-cmake" class="md-skip">
+        <a href="#lab-4-指针的高级使用" class="md-skip">
           跳转至
         </a>
       
@@ -105,7 +105,7 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="../.." title="USTC 系统程序设计基础" class="md-header__button md-logo" aria-label="USTC 系统程序设计基础" data-md-component="logo">
+    <a href=".." title="USTC 系统程序设计基础" class="md-header__button md-logo" aria-label="USTC 系统程序设计基础" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M348.8 32C340.7 46.1 336 62.5 336 80v16H64v224h272v64H64c-35.3 0-64-28.7-64-64V96c0-35.3 28.7-64 64-64zM336 432c0 17.5 4.7 33.9 12.8 48H120c-13.3 0-24-10.7-24-24s10.7-24 24-24zm96-400h96c26.5 0 48 21.5 48 48v352c0 26.5-21.5 48-48 48h-96c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48m24 64c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24zm0 96c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24zm56 144a32 32 0 1 0-64 0 32 32 0 1 0 64 0"></path></svg>
@@ -125,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              章节二：现代构建系统：CMake
+              指针的高级使用
             
           </span>
         </div>
@@ -218,7 +218,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
+      <a href=".." class="md-tabs__link">
         
   
   
@@ -239,7 +239,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../lab1/" class="md-tabs__link">
+        <a href="../lab1/" class="md-tabs__link">
           
   
   
@@ -255,13 +255,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../lab2/" class="md-tabs__link">
           
   
   
@@ -281,7 +279,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../lab3/" class="md-tabs__link">
+        <a href="../lab3/" class="md-tabs__link">
           
   
   
@@ -297,11 +295,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../lab4/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
           
   
   
@@ -341,7 +341,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="USTC 系统程序设计基础" class="md-nav__button md-logo" aria-label="USTC 系统程序设计基础" data-md-component="logo">
+    <a href=".." title="USTC 系统程序设计基础" class="md-nav__button md-logo" aria-label="USTC 系统程序设计基础" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M348.8 32C340.7 46.1 336 62.5 336 80v16H64v224h272v64H64c-35.3 0-64-28.7-64-64V96c0-35.3 28.7-64 64-64zM336 432c0 17.5 4.7 33.9 12.8 48H120c-13.3 0-24-10.7-24-24s10.7-24 24-24zm96-400h96c26.5 0 48 21.5 48 48v352c0 26.5-21.5 48-48 48h-96c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48m24 64c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24zm0 96c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24zm56 144a32 32 0 1 0-64 0 32 32 0 1 0 64 0"></path></svg>
@@ -359,7 +359,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href=".." class="md-nav__link">
         
   
   
@@ -438,7 +438,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab1/" class="md-nav__link">
+      <a href="../lab1/" class="md-nav__link">
         
   
   
@@ -466,7 +466,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab1/part1/" class="md-nav__link">
+      <a href="../lab1/part1/" class="md-nav__link">
         
   
   
@@ -494,7 +494,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab1/part2/" class="md-nav__link">
+      <a href="../lab1/part2/" class="md-nav__link">
         
   
   
@@ -522,7 +522,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab1/additional/" class="md-nav__link">
+      <a href="../lab1/additional/" class="md-nav__link">
         
   
   
@@ -554,29 +554,26 @@
       
   
   
-    
   
   
-  
     
     
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked="">
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3">
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
   
   
@@ -594,7 +591,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -612,7 +609,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../" class="md-nav__link">
+      <a href="../lab2/" class="md-nav__link">
         
   
   
@@ -640,7 +637,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../part1/" class="md-nav__link">
+      <a href="../lab2/part1/" class="md-nav__link">
         
   
   
@@ -665,35 +662,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    CMake工具
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../lab2/part2/" class="md-nav__link">
         
   
   
@@ -709,124 +681,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-      
-        <li class="md-nav__item">
-  <a href="#21-什么是-cmake" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.1 什么是 CMake？
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#22-基础-cmakeliststxt" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.2 基础 CMakeLists.txt
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2.2 基础 CMakeLists.txt">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#221-四行核心指令" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.2.1 四行核心指令
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#23-标准构建流程外部构建-out-of-source-build" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.3 标准构建流程：外部构建 (Out-of-source Build)
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2.3 标准构建流程：外部构建 (Out-of-source Build)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#构建命令" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        构建命令：
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#24-进阶如何处理头文件" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.4 进阶：如何处理头文件？
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#25-为什么我们要用-cmake对比总结" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.5 为什么我们要用 CMake？（对比总结）
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#26-qa-与避坑指南" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.6 Q&amp;A 与避坑指南
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -839,7 +693,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../part3/" class="md-nav__link">
+      <a href="../lab2/part3/" class="md-nav__link">
         
   
   
@@ -867,7 +721,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../experiment-guide/" class="md-nav__link">
+      <a href="../lab2/experiment-guide/" class="md-nav__link">
         
   
   
@@ -954,7 +808,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab3/" class="md-nav__link">
+      <a href="../lab3/" class="md-nav__link">
         
   
   
@@ -982,7 +836,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab3/problem1_word_cleaner/" class="md-nav__link">
+      <a href="../lab3/problem1_word_cleaner/" class="md-nav__link">
         
   
   
@@ -1010,7 +864,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab3/problem2_score_filter/" class="md-nav__link">
+      <a href="../lab3/problem2_score_filter/" class="md-nav__link">
         
   
   
@@ -1038,7 +892,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab3/problem3_phonebook/" class="md-nav__link">
+      <a href="../lab3/problem3_phonebook/" class="md-nav__link">
         
   
   
@@ -1070,26 +924,29 @@
       
   
   
+    
   
   
+  
     
     
     
     
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
       
         
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked="">
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5">
-        
-          
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
             
   
   
@@ -1107,7 +964,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1122,10 +979,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../lab4/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    指针的高级使用
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1141,6 +1025,76 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#统一要求" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        统一要求
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#题目列表" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        题目列表
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="题目列表">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#题目" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        题目
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#提交方式" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        提交方式
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1153,7 +1107,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab4/LRU_Cache/" class="md-nav__link">
+      <a href="LRU_Cache/" class="md-nav__link">
         
   
   
@@ -1198,6 +1152,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1206,10 +1162,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#21-什么是-cmake" class="md-nav__link">
+  <a href="#统一要求" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.1 什么是 CMake？
+        统一要求
       
     </span>
   </a>
@@ -1217,22 +1173,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#22-基础-cmakeliststxt" class="md-nav__link">
+  <a href="#题目列表" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.2 基础 CMakeLists.txt
+        题目列表
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2.2 基础 CMakeLists.txt">
+    <nav class="md-nav" aria-label="题目列表">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#221-四行核心指令" class="md-nav__link">
+  <a href="#题目" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.2.1 四行核心指令
+        题目
       
     </span>
   </a>
@@ -1245,60 +1201,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#23-标准构建流程外部构建-out-of-source-build" class="md-nav__link">
+  <a href="#提交方式" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.3 标准构建流程：外部构建 (Out-of-source Build)
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2.3 标准构建流程：外部构建 (Out-of-source Build)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#构建命令" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        构建命令：
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#24-进阶如何处理头文件" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.4 进阶：如何处理头文件？
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#25-为什么我们要用-cmake对比总结" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.5 为什么我们要用 CMake？（对比总结）
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#26-qa-与避坑指南" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.6 Q&amp;A 与避坑指南
+        提交方式
       
     </span>
   </a>
@@ -1322,116 +1228,29 @@
 
 
 
-  <h1>CMake工具</h1>
-
-<p>在上一章节中，我们手动编写了 Makefile。虽然对于几个文件的项目来说还算轻松，但如果项目引入了复杂的文件夹结构、外部库，或者需要从 Linux 迁移到 Windows，手写 Makefile 就会变成一场噩梦。</p>
-<p>这一节，我们将学习现代 C/C++ 开发的标准工具——<strong>CMake</strong>。</p>
-<hr>
-<h2 id="21-什么是-cmake">2.1 什么是 CMake？<a class="headerlink" href="#21-什么是-cmake" title="Permanent link">¶</a></h2>
-<p><strong>CMake (Cross-Platform Make)</strong> 并不是直接替代 <code>make</code> 的编译器，而是一个<strong>构建系统生成器 (Generator)</strong>。</p>
+<h1 id="lab-4-指针的高级使用">Lab 4: 指针的高级使用<a class="headerlink" href="#lab-4-指针的高级使用" title="Permanent link">¶</a></h1>
+<h2 id="统一要求">统一要求<a class="headerlink" href="#统一要求" title="Permanent link">¶</a></h2>
 <ul>
-<li><strong>Make</strong>：像是一个<strong>具体的食谱</strong>，规定了哪一分钟下肉，哪一分钟撒盐。</li>
-<li><strong>CMake</strong>：更像是一个<strong>厨政主管</strong>。你只需要告诉它：“我要做一个宫保鸡丁”，它会根据你现在的厨房环境（是 Linux 的 <code>gcc</code> 厨房，还是 Windows 的 <code>Visual Studio</code> 厨房），自动为你写好那份详细的“食谱”（Makefile 或项目文件）。</li>
+<li>使用 C 语言完成</li>
+<li>采用多文件组织</li>
+<li>需要显式使用指针</li>
+<li>要求使用<strong>带头节点的双向链表</strong></li>
 </ul>
-<hr>
-<h2 id="22-基础-cmakeliststxt">2.2 基础 CMakeLists.txt<a class="headerlink" href="#22-基础-cmakeliststxt" title="Permanent link">¶</a></h2>
-<p>CMake 的所有指令都写在一个名为 <code>CMakeLists.txt</code>（注意大小写和拼写）的文件中。</p>
-<h3 id="221-四行核心指令">2.2.1 四行核心指令<a class="headerlink" href="#221-四行核心指令" title="Permanent link">¶</a></h3>
-<p>一个最基础的 <code>CMakeLists.txt</code> 如下：</p>
-<div class="highlight"><pre><span></span><code><span class="c"># 1. 声明要求的最低版本（保证语法兼容性）</span>
-<span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span><span class="w"> </span><span class="s">3.10</span><span class="p">)</span>
-
-<span class="c"># 2. 定义项目名称和版本</span>
-<span class="nb">project</span><span class="p">(</span><span class="s">ISP_Lab2</span><span class="w"> </span><span class="s">VERSION</span><span class="w"> </span><span class="s">1.0</span><span class="p">)</span>
-
-<span class="c"># 3. 指定编译选项（这里开启了所有警告并使用 C11 标准）</span>
-<span class="nb">set</span><span class="p">(</span><span class="s">CMAKE_C_STANDARD</span><span class="w"> </span><span class="s">11</span><span class="p">)</span>
-<span class="nb">add_compile_options</span><span class="p">(</span><span class="s">-Wall</span><span class="w"> </span><span class="s">-Wextra</span><span class="w"> </span><span class="s">-g</span><span class="p">)</span>
-
-<span class="c"># 4. 告诉 CMake：我要生成一个叫 hello 的程序，源码是这些</span>
-<span class="nb">add_executable</span><span class="p">(</span><span class="s">hello</span><span class="w"> </span><span class="s">main.c</span><span class="w"> </span><span class="s">tool.c</span><span class="p">)</span>
-</code></pre></div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><strong>CMake 的优势</strong>：你发现了吗？我们<strong>没有</strong>在这里手动写 <code>.h</code> 的依赖关系。CMake 会在生成构建系统时，自动扫描源码中的 <code>#include</code>，并帮你处理好依赖树。</p>
+<h2 id="题目列表">题目列表<a class="headerlink" href="#题目列表" title="Permanent link">¶</a></h2>
+<h3 id="题目">题目<a class="headerlink" href="#题目" title="Permanent link">¶</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Deadline</p>
+<p>2026年4月24日23:59</p>
 </div>
-<hr>
-<h2 id="23-标准构建流程外部构建-out-of-source-build">2.3 标准构建流程：外部构建 (Out-of-source Build)<a class="headerlink" href="#23-标准构建流程外部构建-out-of-source-build" title="Permanent link">¶</a></h2>
-<p>在运行 CMake 时，会产生大量的中间缓存文件（如 <code>CMakeCache.txt</code>, <code>CMakeFiles/</code>）。如果直接在源码目录下运行，你的代码文件夹会瞬间变得极其混乱。</p>
-<p>因此，所有专业的开发者都会使用 <strong>“外部构建”</strong>：</p>
-<h3 id="构建命令">构建命令：<a class="headerlink" href="#构建命令" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>build<span class="w">    </span><span class="c1"># 1. 创建一个独立的构建目录</span>
-<span class="nb">cd</span><span class="w"> </span>build<span class="w">       </span><span class="c1"># 2. 钻进这个目录</span>
-cmake<span class="w"> </span>..<span class="w">       </span><span class="c1"># 3. “隔空取物”：让 CMake 读取上一级目录(..)的 CMakeLists.txt，并在当前目录生成 Makefile</span>
-make<span class="w">           </span><span class="c1"># 4. 此时 Makefile 已在 build 中生成，执行 make 即可编译</span>
-</code></pre></div>
-<p><strong>为什么执行 <code>cmake ..</code>？</strong>
-<code>..</code> 代表父目录。CMake 需要知道 <code>CMakeLists.txt</code> 在哪，同时也知道要把生成的“垃圾文件”留在当前的 <code>build/</code> 文件夹里。</p>
-<hr>
-<h2 id="24-进阶如何处理头文件">2.4 进阶：如何处理头文件？<a class="headerlink" href="#24-进阶如何处理头文件" title="Permanent link">¶</a></h2>
-<p>如果你的项目结构变得复杂，例如头文件放在 <code>include/</code> 目录下：</p>
-<div class="highlight"><pre><span></span><code>.
-├── CMakeLists.txt
-├── include/
-│   └── tool.h
-└── src/
-    ├── main.c
-    └── tool.c
-</code></pre></div>
-<p>你需要告诉 CMake 去哪里找头文件，否则编译时会报 <code>fatal error: tool.h: No such file or directory</code>。</p>
-<div class="highlight"><pre><span></span><code><span class="c"># 添加头文件搜索路径</span>
-<span class="nb">target_include_directories</span><span class="p">(</span><span class="s">hello</span><span class="w"> </span><span class="s">PUBLIC</span><span class="w"> </span><span class="s">include</span><span class="p">)</span>
-
-<span class="c"># 指定源码路径</span>
-<span class="nb">add_executable</span><span class="p">(</span><span class="s">hello</span><span class="w"> </span><span class="s">src/main.c</span><span class="w"> </span><span class="s">src/tool.c</span><span class="p">)</span>
-</code></pre></div>
-<hr>
-<h2 id="25-为什么我们要用-cmake对比总结">2.5 为什么我们要用 CMake？（对比总结）<a class="headerlink" href="#25-为什么我们要用-cmake对比总结" title="Permanent link">¶</a></h2>
-<table>
-<thead>
-<tr>
-<th>特性</th>
-<th>Make / Makefile</th>
-<th>CMake</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>层级</strong></td>
-<td>底层，直接控制编译动作</td>
-<td>高层，抽象描述项目需求</td>
-</tr>
-<tr>
-<td><strong>头文件依赖</strong></td>
-<td><strong>必须手动维护</strong>，漏写会导致更新不及时</td>
-<td><strong>自动扫描</strong>，无需操心</td>
-</tr>
-<tr>
-<td><strong>跨平台</strong></td>
-<td>换个系统（如 Win）基本要重写</td>
-<td>同样的文件，生成对应的工程文件</td>
-</tr>
-<tr>
-<td><strong>复杂度</strong></td>
-<td>文件多了之后，维护极其困难</td>
-<td>支持嵌套，大型项目的工业标准</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<h2 id="26-qa-与避坑指南">2.6 Q&amp;A 与避坑指南<a class="headerlink" href="#26-qa-与避坑指南" title="Permanent link">¶</a></h2>
-<details class="question">
-<summary><strong>Q: <code>cmake ..</code> 报错 <code>CMakeLists.txt not found</code>？</strong></summary>
-<p>A: 检查你是否在 <code>build</code> 目录下，且 <code>..</code> 路径是否正确指向了包含 <code>CMakeLists.txt</code> 的那个文件夹。</p>
-</details>
-<details class="question">
-<summary><strong>Q: 我修改了代码，需要重新运行 <code>cmake ..</code> 吗？</strong></summary>
-<p>A: 通常不需要。直接在 <code>build</code> 目录下运行 <code>make</code> 即可。生成的 Makefile 非常聪明，它如果检测到 <code>CMakeLists.txt</code> 变了，会自己触发 CMake 更新。</p>
-</details>
-<details class="question">
-<summary><strong>Q: 为什么生成的 <code>build</code> 目录下有几百个文件？</strong></summary>
-<p>A: 别担心，这就是为什么我们要建 <code>build</code> 文件夹的原因。如果你想“彻底清理”编译产物，直接 <code>rm -rf build</code> 即可，完全不会伤及源码。</p>
-</details>
+<p><a href="LRU_Cache/">LRU 缓存</a></p>
+<ul>
+<li>关键词：指针、双向链表。</li>
+</ul>
+<h2 id="提交方式">提交方式<a class="headerlink" href="#提交方式" title="Permanent link">¶</a></h2>
+<ul>
+<li>在<a href="https://cscourse.ustc.edu.cn/">希冀平台</a>上提交压缩包，将实验涉及的所有<code>.c</code>和<code>.h</code>进行压缩。</li>
+<li>本实验进行<strong>完全匹配</strong>：为了降低格式的影响，系统自动去掉了行首与行尾的空白字符（制表符、空格、控制字符等不可见字符）、以及空白行，进行对比。</li>
+</ul>
 
 
 
@@ -1452,7 +1271,7 @@ make<span class="w">           </span><span class="c1"># 4. 此时 Makefile 已�
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年3月11日 06:05:04 UTC">2026年3月11日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年4月10日 12:36:27 UTC">2026年4月10日</span>
   </span>
 
     
@@ -1468,7 +1287,7 @@ make<span class="w">           </span><span class="c1"># 4. 此时 Makefile 已�
     </span>
     <nav>
       
-        <a href="mailto:1002682355@qq.com">Terialion</a>
+        <a href="mailto:wyh2022@mail.ustc.edu.cn">Terialion</a>
     </nav>
   </span>
 
@@ -1497,7 +1316,7 @@ make<span class="w">           </span><span class="c1"># 4. 此时 Makefile 已�
       <nav class="md-footer__inner md-grid" aria-label="页脚">
         
           
-          <a href="../part1/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Make工具">
+          <a href="../lab3/problem3_phonebook/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 动态通讯录">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
@@ -1507,20 +1326,20 @@ make<span class="w">           </span><span class="c1"># 4. 此时 Makefile 已�
                 上一页
               </span>
               <div class="md-ellipsis">
-                Make工具
+                动态通讯录
               </div>
             </div>
           </a>
         
         
           
-          <a href="../part3/" class="md-footer__link md-footer__link--next" aria-label="下一页: Git工具">
+          <a href="LRU_Cache/" class="md-footer__link md-footer__link--next" aria-label="下一页: LRU 缓存">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 下一页
               </span>
               <div class="md-ellipsis">
-                Git工具
+                LRU 缓存
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -1557,20 +1376,20 @@ make<span class="w">           </span><span class="c1"># 4. 此时 Makefile 已�
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.expand", "navigation.footer", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.expand", "navigation.footer", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
-        <script src="../../javascripts/mathjax.js"></script>
+        <script src="../javascripts/mathjax.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
-        <script src="../../javascripts/katex.js"></script>
+        <script src="../javascripts/katex.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
       
