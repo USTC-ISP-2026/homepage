@@ -129,3 +129,6 @@ nav:
   - Lab4:
     - 指针的高级使用: lab4/index.md
     - LRU 缓存: lab4/LRU_Cache.md
+  - Lab5:
+    - 代码的优化: lab5/index.md
+    - 图像卷积性能优化: lab5/Image_Convolution_Optimization.md
